@@ -8,7 +8,7 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 
 *   **Primary Ecosystem**: **General Project**
 *   **Total Files Count**: 5 scanned files
-*   **Combined Size**: 146.8 KB
+*   **Combined Size**: 147.7 KB
 
 ---
 
@@ -23,10 +23,10 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 
 | Route / Endpoint | Type | Method | File Location |
 | :--- | :--- | :--- | :--- |
-| `/api/v1/health` | **Backend API** | `GET` | [`index.html:304`](file:///Users/sujoymoulick/scanner-skill/index.html#L304) |
-| `/api/v1/health` | **Backend API** | `GET` | [`index.html:304`](file:///Users/sujoymoulick/scanner-skill/index.html#L304) |
-| `/api/v1/users` | **Backend API** | `POST` | [`index.html:308`](file:///Users/sujoymoulick/scanner-skill/index.html#L308) |
-| `/api/v1/users` | **Backend API** | `POST` | [`index.html:308`](file:///Users/sujoymoulick/scanner-skill/index.html#L308) |
+| `/api/v1/health` | **Backend API** | `GET` | [`index.html:305`](file:///Users/sujoymoulick/scanner-skill/index.html#L305) |
+| `/api/v1/health` | **Backend API** | `GET` | [`index.html:305`](file:///Users/sujoymoulick/scanner-skill/index.html#L305) |
+| `/api/v1/users` | **Backend API** | `POST` | [`index.html:309`](file:///Users/sujoymoulick/scanner-skill/index.html#L309) |
+| `/api/v1/users` | **Backend API** | `POST` | [`index.html:309`](file:///Users/sujoymoulick/scanner-skill/index.html#L309) |
 
 ---
 
@@ -64,9 +64,9 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 
 ## 🏗️ Codebase Directory Tree
 ```text
-├── 📄 .gitignore (127 B)
-├── 📄 index.html (51.9 KB)
-├── 📄 README.md (8.7 KB)
+├── 📄 .gitignore (171 B)
+├── 📄 index.html (52.1 KB)
+├── 📄 README.md (9.4 KB)
 ├── 📄 scan.js (63.7 KB)
 └── 📄 styles.css (22.4 KB)
 ```
@@ -78,9 +78,9 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 ### Language & Extension Breakdown
 | File Extension | File Count | Combined Size | Total Lines |
 | :--- | :--- | :--- | :--- |
-| `` () | 1 | 127 B | N/A |
-| `.html` (HTML) | 1 | 51.9 KB | 846 |
-| `.md` (Markdown) | 1 | 8.7 KB | 171 |
+| `` () | 1 | 171 B | N/A |
+| `.html` (HTML) | 1 | 52.1 KB | 848 |
+| `.md` (Markdown) | 1 | 9.4 KB | 186 |
 | `.js` (JavaScript) | 1 | 63.7 KB | 1714 |
 | `.css` (CSS) | 1 | 22.4 KB | 1099 |
 
@@ -88,10 +88,10 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 | File Path | Size | File Type |
 | :--- | :--- | :--- |
 | [`scan.js`](file:///Users/sujoymoulick/scanner-skill/scan.js) | 63.7 KB | `JavaScript` |
-| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 51.9 KB | `HTML` |
+| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 52.1 KB | `HTML` |
 | [`styles.css`](file:///Users/sujoymoulick/scanner-skill/styles.css) | 22.4 KB | `CSS` |
-| [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 8.7 KB | `Markdown` |
-| [`.gitignore`](file:///Users/sujoymoulick/scanner-skill/.gitignore) | 127 B | `` |
+| [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 9.4 KB | `Markdown` |
+| [`.gitignore`](file:///Users/sujoymoulick/scanner-skill/.gitignore) | 171 B | `` |
 
 ---
 
