@@ -1357,6 +1357,31 @@ footer {
     flex-shrink: 0;
   }
   
+  /* Fix Markdown container padding & list indentation on mobile */
+  .instructions-card {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .markdown-body ul, 
+  .markdown-body ol {
+    padding-left: 1.25rem !important;
+  }
+  
+  .markdown-body {
+    font-size: 0.95rem;
+    min-width: 0;
+    width: 100%;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+  }
+  
+  .markdown-body * {
+    min-width: 0;
+    max-width: 100%;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+  }
+  
   /* Optimize Dino Loader sizing for very small viewports */
   .dino-game-wrapper {
     padding: 2rem 1.25rem !important;
