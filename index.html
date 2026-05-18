@@ -21,12 +21,14 @@
 
   <!-- Retro Chrome Dino Loader Overlay -->
   <div id="dino-loader" class="dino-loader-overlay">
-    <div class="dino-game-container">
-      <div class="cloud-background"></div>
-      <div class="cactus-obstacle"></div>
-      <div class="dino-runner"></div>
+    <div class="dino-game-wrapper">
+      <div class="dino-game-container">
+        <div class="cloud-background"></div>
+        <div class="cactus-obstacle"></div>
+        <div class="dino-runner"></div>
+      </div>
+      <div id="dino-status-text" class="loader-status-text">INITIALIZING ENGINE...</div>
     </div>
-    <div id="dino-status-text" class="loader-status-text">REDIRECTING...</div>
   </div>
 
   <!-- Header Navigation -->
@@ -853,70 +855,48 @@ func GetTasks(c *gin.Context) {
       document.getElementById('tree-container').innerText = activeScanData.tree;
     }
 
-    // Intercept Links for Retro Dinosaur Loading Animation
+    // Retro Dinosaur Neubrutalist Loader - Session One-Time Play
     document.addEventListener('DOMContentLoaded', () => {
       const loader = document.getElementById('dino-loader');
-      if (loader) {
-        // Initial setup - hide the loader from displaying raw
+      if (!loader) return;
+
+      // Check if loader has run in the current session
+      const hasLoaded = sessionStorage.getItem('dino_loaded');
+      
+      if (!hasLoaded) {
+        // First load: Show loader
+        loader.style.display = 'flex';
+        loader.style.opacity = '1';
+        
+        const statusPhrases = [
+          'INITIALIZING SKILL ENGINE...',
+          'LOADING CODEBASE BLUEPRINTS...',
+          'LAUNCHING NEUBRUTALIST INTERFACE...'
+        ];
+        
+        let phraseIndex = 0;
+        const statusText = document.getElementById('dino-status-text');
+        
+        // Cycle retro status phrases during the loader
+        const phraseInterval = setInterval(() => {
+          phraseIndex = (phraseIndex + 1) % statusPhrases.length;
+          if (statusText) statusText.innerText = statusPhrases[phraseIndex];
+        }, 700);
+
+        // Hide after 2.2 seconds
+        setTimeout(() => {
+          clearInterval(phraseInterval);
+          loader.style.opacity = '0';
+          setTimeout(() => {
+            loader.style.display = 'none';
+            sessionStorage.setItem('dino_loaded', 'true');
+          }, 300);
+        }, 2200);
+      } else {
+        // Subsequent loads: Hide loader instantly
         loader.style.display = 'none';
         loader.style.opacity = '0';
       }
-
-      // Add click interceptors to all anchors
-      document.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          const href = link.getAttribute('href');
-          
-          // Show loader for external portfolio links or section smooth jumps
-          if (href && (href.startsWith('http') || href.includes('sujoymoulick') || href.startsWith('#'))) {
-            // Ignore blank or dummy links
-            if (href === '#' || href === '#!') return;
-
-            e.preventDefault();
-            
-            if (loader) {
-              const statusText = document.getElementById('dino-status-text');
-              
-              // Set customized retro loading messages
-              if (href.includes('sujoymoulick.online')) {
-                statusText.innerText = 'LOADING SUJOY\'S PORTFOLIO...';
-              } else if (href === '#about-developer') {
-                statusText.innerText = 'LOCATING THE DEVELOPER...';
-              } else if (href === '#features') {
-                statusText.innerText = 'LOADING FEATURES MATRIX...';
-              } else if (href === '#demo') {
-                statusText.innerText = 'INITIALIZING PLAYGROUND...';
-              } else if (href === '#how-it-works') {
-                statusText.innerText = 'LOADING TIMELINE PIPELINE...';
-              } else if (href === '#terminal-section') {
-                statusText.innerText = 'CONNECTING TERMINAL CONTROLLER...';
-              } else {
-                statusText.innerText = 'REDIRECTING TO TARGET...';
-              }
-              
-              loader.style.display = 'flex';
-              // Force reflow for transitions
-              loader.offsetHeight; 
-              loader.style.opacity = '1';
-              
-              setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                  loader.style.display = 'none';
-                  if (href.startsWith('#')) {
-                    const targetEl = document.querySelector(href);
-                    if (targetEl) {
-                      targetEl.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  } else {
-                    window.open(href, '_blank');
-                  }
-                }, 300);
-              }, 1600); // 1.6 seconds of beautiful retro Chrome dino jumping animation
-            }
-          }
-        });
-      });
     });
   </script>
 </body>
