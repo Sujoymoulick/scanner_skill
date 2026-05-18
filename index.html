@@ -897,6 +897,23 @@ func GetTasks(c *gin.Context) {
         loader.style.display = 'none';
         loader.style.opacity = '0';
       }
+
+      // Click on Logo returns back to Hero Section / resets cloner view
+      const logoHome = document.getElementById('logo-home');
+      if (logoHome) {
+        logoHome.addEventListener('click', () => {
+          const heroSec = document.querySelector('main.hero');
+          const dashSec = document.getElementById('active-dashboard');
+          
+          if (dashSec && dashSec.style.display === 'block') {
+            dashSec.style.display = 'none';
+            if (heroSec) heroSec.style.display = 'block';
+          }
+          
+          // Smooth scroll to the top of the page (Hero Section)
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     });
   </script>
 </body>
