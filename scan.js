@@ -984,7 +984,7 @@ function generateSingleReadme(targetPath, repoName, repoUrl, tree, manifests, ro
   md += `1. **Clone your target repository**:\n`;
   md += `   \`\`\`bash\n   git clone <target-repo-url> && cd <target-folder-name>\n   \`\`\`\n`;
   md += `2. **Clone the Codebase Scanner Skill** directly inside it:\n`;
-  md += `   \`\`\`bash\n   git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill\n   \`\`\`\n`;
+  md += `   \`\`\`bash\n   git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill\n   \`\`\`\n`;
   md += `3. **Set up & Execute the static sweep**:\n`;
   md += `   \`\`\`bash\n   cd scanner_skill && npm install && node scan.js\n   \`\`\`\n`;
   md += `4. **Feed the Blueprints to your AI Agent**: Direct your assistant to read the compiled files under \`output_scanner/\` (e.g. \`readme.md\`, \`ui.md\`, \`instruction.md\`) to code with absolute architectural clarity at a fraction of the token cost!\n\n`;
@@ -1217,7 +1217,7 @@ function generateReadmeMarkdown(repoName, repoUrl, stats, tree, manifests) {
   md += `1. **Clone your target repository**:\n`;
   md += `   \`\`\`bash\n   git clone <target-repo-url> && cd <target-folder-name>\n   \`\`\`\n`;
   md += `2. **Clone this Scanner Skill** directly into it:\n`;
-  md += `   \`\`\`bash\n   git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill\n   \`\`\`\n`;
+  md += `   \`\`\`bash\n   git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill\n   \`\`\`\n`;
   md += `3. **Set up & Execute the static sweep**:\n`;
   md += `   \`\`\`bash\n   cd scanner_skill && npm install && node scan.js\n   \`\`\`\n`;
   md += `4. **Direct your AI Assistant** (Cursor, Tabnine, etc.) to read the compiled files under \`output_scanner/\` to work with full, lightweight project blueprints instantly!\n\n`;

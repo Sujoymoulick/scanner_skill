@@ -161,7 +161,7 @@ No dedicated install instructions detected in the original project readme.
    ```
 2. **Clone the Codebase Scanner Skill** directly inside it:
    ```bash
-   git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill
+   git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill
    ```
 3. **Set up & Execute the static sweep**:
    ```bash
