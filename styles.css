@@ -1309,6 +1309,11 @@ footer {
   .sidebar-card h3 {
     font-size: 1.75rem !important;
   }
+  
+  /* Fix Developer Profile Card overflow */
+  #about-developer .developer-grid > div {
+    padding: 1.5rem !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1359,3 +1364,21 @@ footer {
     font-size: 1.35rem !important;
   }
 }
+
+/* ==========================================================================
+   Dynamic Scroll Reveal Animations
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }

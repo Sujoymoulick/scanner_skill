@@ -914,6 +914,32 @@ func GetTasks(c *gin.Context) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      // ==========================================================================
+      // Dynamic Scroll Reveal (Auto-injecting classes to prevent HTML clutter)
+      // ==========================================================================
+      const elementsToReveal = document.querySelectorAll('.hero-text, .terminal-banner, .feature-card, .playground-nav, .playground-box, .timeline-item, .vibe-coding-grid > div, .developer-grid > div, .manual-installation-block .install-step, .ref-copy-box, .section-title');
+      
+      elementsToReveal.forEach((el, index) => {
+        el.classList.add('reveal');
+        // Add slight stagger delays to adjacent grid items
+        if (el.classList.contains('feature-card') || el.classList.contains('timeline-item')) {
+           el.classList.add(`reveal-delay-${(index % 3) + 1}`);
+        }
+      });
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -30px 0px"
+      });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     });
   </script>
 </body>
