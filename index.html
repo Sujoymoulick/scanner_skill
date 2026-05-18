@@ -527,25 +527,18 @@ func GetTasks(c *gin.Context) {
           </div>
         </div>
 
-        <!-- Walkthrough Step D -->
-        <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
-            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">D</span>
-            Feed high-density output blueprints directly to your AI agent:
-          </h4>
-          <p style="font-size: 1.05rem; line-height: 1.6; color: var(--color-black); margin-left: 2.5rem; margin-top: 0;">
-            The scanner automatically parses the project and outputs three specialized, high-fidelity blueprints under <code>output_scanner/</code> inside the cloned repo root:
-          </p>
-          <ul style="list-style-type: square; margin-left: 4.5rem; font-size: 1.05rem; color: var(--color-black); line-height: 1.8;">
-            <li><code>output_scanner/readme.md</code> (Complete project metrics and folder topologies)</li>
-            <li><code>output_scanner/ui.md</code> (API endpoint routing and stylesheet Custom Variables)</li>
-            <li><code>output_scanner/instruction.md</code> (Step-by-step startup checklists and running roadmaps)</li>
-          </ul>
-          <p style="font-size: 1.05rem; line-height: 1.6; color: var(--color-black); margin-left: 2.5rem; margin-top: 0.5rem; font-weight: bold;">
-            🎉 Success! Simply prompt Cursor or Tabnine to read this folder first, and work with 100% architectural context while saving up to 90% of your token usage!
-          </p>
-        </div>
+      </div>
+    </div>
 
+    <!-- Output Blueprints Box -->
+    <div style="display: flex; justify-content: center; padding: 3rem 1rem; margin-top: 1rem;">
+      <div style="background-color: var(--color-white); border: var(--border-thick); padding: 3rem 2rem; box-shadow: var(--shadow-brutal-large); text-align: center; max-width: 500px; width: 100%;">
+        <h3 style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: bold; color: var(--color-black); margin-bottom: 1.5rem; letter-spacing: 1px;">
+          Context Blueprints
+        </h3>
+        <p style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--color-black); line-height: 1.8; margin: 0 auto; max-width: 420px;">
+          Get three specialized markdown blueprints (readme.md, instruction.md, ui.md) under <strong>output_scanner/</strong> or run the port 3000 console.
+        </p>
       </div>
     </div>
   </section>
@@ -567,26 +560,41 @@ func GetTasks(c *gin.Context) {
           Copy and paste this instruction set directly into popular AI tools (<strong>Cursor Composer/Chat, Tabnine, VS Code Copilot, Windsurf, or Gemini</strong>) to let the AI automatically set up and run the scanner skill for you:
         </p>
         
-        <div class="ref-copy-box" style="position: relative; background-color: #f8fafc; border: var(--border-thick); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; box-shadow: var(--shadow-brutal); text-align: left;">
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--border-thin); padding-bottom: 1rem; margin-bottom: 0.5rem;">
-            <span style="font-family: var(--font-mono); font-weight: bold; color: var(--color-black); font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
-              ⚡ Copypasta Agent Prompt
-            </span>
-            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, document.getElementById('ai-prompt-text').innerText)" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              <span>Copy Prompt</span>
+        <div class="code-editor-card">
+          <!-- Tabs Bar -->
+          <div class="editor-tabs-bar">
+            <div class="editor-tab active">
+              <img src="assets/scanner_skill logo.png" alt="Logo" style="height: 22px; width: auto; object-fit: contain;">
+              <span>Scanner_skill_Intrigation</span>
+            </div>
+            <button class="editor-btn-copy" onclick="copyIndividualCmd(this, document.getElementById('ai-prompt-text').innerText)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
             </button>
           </div>
-          <pre id="ai-prompt-text" style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--color-black); font-weight: bold; white-space: pre-wrap; line-height: 1.8; margin: 0; word-break: break-all;">Please install the Codebase Scanner Skill inside my project by running the following commands in order:
-1. Open a terminal inside the project root workspace.
-2. Clone the scanner skill repository:
-   git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill
-3. Navigate inside the folder:
-   cd scanner_skill
-4. Install dependencies:
-   npm install
-5. Scan my repository dynamically to generate the high-density output blueprints:
-   node scan.js</pre>
+
+          <!-- Header Bar -->
+          <div class="editor-header-bar">
+            SOURCE INPUT FILE
+          </div>
+
+          <!-- Code Body -->
+          <div class="editor-code-body">
+            <pre id="ai-prompt-text">// system_prompt.txt
+Please install the Codebase Scanner Skill inside my project by running the following commands in order:
+
+// Step 1 & 2: Clone repository
+git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill
+
+// Step 3: Navigate inside
+cd scanner_skill
+
+// Step 4: Install dependencies
+npm install
+
+// Step 5: Scan repository dynamically
+node scan.js</pre>
+          </div>
         </div>
       </div>
 

@@ -1320,18 +1320,122 @@ footer {
   }
 }
 
+/* ==========================================================================
+   Code Editor Reference UI Card
+   ========================================================================== */
+.code-editor-card {
+  position: relative;
+  background-color: #000000;
+  border: var(--border-thick);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-brutal-large);
+  text-align: left;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.editor-tabs-bar {
+  display: flex;
+  border-bottom: var(--border-thick);
+  background-color: var(--color-white);
+  flex-wrap: wrap;
+}
+
+.editor-tab {
+  padding: 1rem 1.5rem;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-right: var(--border-thick);
+}
+
+.editor-tab.active {
+  background-color: var(--accent-cyan);
+  color: var(--color-black);
+}
+
+.editor-tab.inactive {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.editor-btn-copy {
+  margin-left: auto;
+  background: var(--bg-yellow);
+  color: var(--color-black);
+  border: none;
+  border-left: var(--border-thick);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.editor-btn-copy:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.editor-header-bar {
+  background-color: #222222;
+  color: #a1a1aa;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.editor-code-body {
+  padding: 2rem;
+  background-color: #000000;
+  overflow-x: auto;
+}
+
+#ai-prompt-text {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #39ff14; /* Matrix Neon Green */
+  font-weight: bold;
+  white-space: pre-wrap;
+  line-height: 1.8;
+  margin: 0;
+  word-break: break-all;
+}
+
 @media (max-width: 600px) {
-  /* Copy-paste containers mobile stacking */
-  .ref-copy-box {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 1rem !important;
-    padding: 1rem !important;
+  /* Code Editor Card Mobile Stacking */
+  .editor-tabs-bar {
+    flex-direction: column;
   }
   
-  .ref-btn-copy {
-    justify-content: center;
+  .editor-tab {
+    border-right: none;
+    border-bottom: var(--border-thick);
     width: 100%;
+    justify-content: center;
+  }
+  
+  .editor-btn-copy {
+    margin-left: 0;
+    border-left: none;
+    width: 100%;
+    justify-content: center;
+    border-bottom: var(--border-thick);
+  }
+  
+  .editor-code-body {
+    padding: 1.25rem;
   }
   
   .ref-code {
