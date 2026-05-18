@@ -7,8 +7,8 @@
 Welcome to the ultimate codebase blueprint for **scanner-skill**. This document compiles high-density specifications, dynamic routing schemes, custom styling design tokens, file topologies, repository statistics, and step-by-step extension roadmaps in a single unified entrypoint.
 
 *   **Primary Ecosystem**: **General Project**
-*   **Total Files Count**: 4 scanned files
-*   **Combined Size**: 138.7 KB
+*   **Total Files Count**: 5 scanned files
+*   **Combined Size**: 146.8 KB
 
 ---
 
@@ -64,9 +64,10 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 
 ## 🏗️ Codebase Directory Tree
 ```text
-├── 📄 index.html (45.3 KB)
+├── 📄 .gitignore (127 B)
+├── 📄 index.html (51.9 KB)
 ├── 📄 README.md (8.7 KB)
-├── 📄 scan.js (62.3 KB)
+├── 📄 scan.js (63.7 KB)
 └── 📄 styles.css (22.4 KB)
 ```
 
@@ -77,18 +78,20 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 ### Language & Extension Breakdown
 | File Extension | File Count | Combined Size | Total Lines |
 | :--- | :--- | :--- | :--- |
-| `.html` (HTML) | 1 | 45.3 KB | 759 |
+| `` () | 1 | 127 B | N/A |
+| `.html` (HTML) | 1 | 51.9 KB | 846 |
 | `.md` (Markdown) | 1 | 8.7 KB | 171 |
-| `.js` (JavaScript) | 1 | 62.3 KB | 1700 |
+| `.js` (JavaScript) | 1 | 63.7 KB | 1714 |
 | `.css` (CSS) | 1 | 22.4 KB | 1099 |
 
 ### 🔝 Top 5 Largest Files
 | File Path | Size | File Type |
 | :--- | :--- | :--- |
-| [`scan.js`](file:///Users/sujoymoulick/scanner-skill/scan.js) | 62.3 KB | `JavaScript` |
-| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 45.3 KB | `HTML` |
+| [`scan.js`](file:///Users/sujoymoulick/scanner-skill/scan.js) | 63.7 KB | `JavaScript` |
+| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 51.9 KB | `HTML` |
 | [`styles.css`](file:///Users/sujoymoulick/scanner-skill/styles.css) | 22.4 KB | `CSS` |
 | [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 8.7 KB | `Markdown` |
+| [`.gitignore`](file:///Users/sujoymoulick/scanner-skill/.gitignore) | 127 B | `` |
 
 ---
 
@@ -168,4 +171,16 @@ No dedicated install instructions detected in the original project readme.
 
 
 ---
-*Generated with ❤️ by Pramaaan Unified Codebase Blueprint Engine.*
+
+## 👤 About the Developer
+
+This Codebase Scanner Skill Engine was designed and engineered by **[Sujoy Moulick](https://www.sujoymoulick.online/)**.
+
+*   **Role**: AI/ML & Frontend Architect (B.Tech CSE AI/ML student at UEM Jaipur)
+*   **Philosophy**: *"Bridging the gap between complex software engineering and intuitive user experiences; viewing coding as an interactive art form."*
+*   **Portfolio & Projects**: [sujoymoulick.online](https://www.sujoymoulick.online/) (Adhyayan, Meghdoot, Textora)
+*   **Contact**: [sujoymoulick05@gmail.com](mailto:sujoymoulick05@gmail.com)
+
+
+---
+*Generated with ❤️ by Sujoy Moulick & Pramaaan Unified Codebase Blueprint Engine.*

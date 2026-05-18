@@ -4,5 +4,8 @@ node_modules/
 # Local cloner workspace temporary repos
 cloned-repos/
 
+# Local test footprint runs
+scanner_skill/
+
 # Local OS metadata files
 .DS_Store
