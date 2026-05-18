@@ -998,6 +998,8 @@ footer {
   color: var(--color-black);
   font-size: 1.05rem;
   font-weight: bold;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .markdown-body h2 {
@@ -1037,6 +1039,8 @@ footer {
   padding: 0.2rem 0.4rem;
   font-size: 0.9em;
   color: var(--color-black);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .markdown-body p { margin-bottom: 1rem; }

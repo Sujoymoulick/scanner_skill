@@ -8,7 +8,7 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 
 *   **Primary Ecosystem**: **General Project**
 *   **Total Files Count**: 5 scanned files
-*   **Combined Size**: 158.4 KB
+*   **Combined Size**: 158.5 KB
 
 ---
 
@@ -68,7 +68,7 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 ├── 📄 index.html (55.7 KB)
 ├── 📄 README.md (9.4 KB)
 ├── 📄 scan.js (63.7 KB)
-└── 📄 styles.css (29.4 KB)
+└── 📄 styles.css (29.5 KB)
 ```
 
 ---
@@ -82,14 +82,14 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 | `.html` (HTML) | 1 | 55.7 KB | 947 |
 | `.md` (Markdown) | 1 | 9.4 KB | 186 |
 | `.js` (JavaScript) | 1 | 63.7 KB | 1714 |
-| `.css` (CSS) | 1 | 29.4 KB | 1402 |
+| `.css` (CSS) | 1 | 29.5 KB | 1406 |
 
 ### 🔝 Top 5 Largest Files
 | File Path | Size | File Type |
 | :--- | :--- | :--- |
 | [`scan.js`](file:///Users/sujoymoulick/scanner-skill/scan.js) | 63.7 KB | `JavaScript` |
 | [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 55.7 KB | `HTML` |
-| [`styles.css`](file:///Users/sujoymoulick/scanner-skill/styles.css) | 29.4 KB | `CSS` |
+| [`styles.css`](file:///Users/sujoymoulick/scanner-skill/styles.css) | 29.5 KB | `CSS` |
 | [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 9.4 KB | `Markdown` |
 | [`.gitignore`](file:///Users/sujoymoulick/scanner-skill/.gitignore) | 171 B | `` |
 
