@@ -1,6 +1,5 @@
 <p align="center">
   <img src="assets/scanner_skill%20logo.png" alt="Scanner Skill Logo" width="220">
-  <img width="1904" height="991" alt="Screenshot 2026-05-18 at 12 41 07 PM" src="https://github.com/user-attachments/assets/b4d0480e-3a4f-4a0f-a040-ba69d657cf9e" />
 </p>
 
 # 🚀 **scanner-skill**
@@ -10,7 +9,7 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 *   **Primary Ecosystem**: **General Project**
 *   **Total Files Count**: 5 scanned files
 *   **Combined Size**: 159.5 KB
-
+<img width="1904" height="991" alt="Screenshot 2026-05-18 at 12 41 07 PM" src="https://github.com/user-attachments/assets/b4d0480e-3a4f-4a0f-a040-ba69d657cf9e" />
 ---
 
 ## 🌟 Discovered Architecture Layers
