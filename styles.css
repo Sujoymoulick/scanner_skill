@@ -1331,9 +1331,26 @@ footer {
   }
   
   .ref-code {
-    word-break: break-all;
+    font-size: 0.82rem !important;
+    word-break: break-word !important;
     white-space: normal;
-    text-align: center;
+    text-align: left !important;
+  }
+  
+  #ai-prompt-text {
+    font-size: 0.82rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .install-step h3, 
+  .install-step h4 {
+    font-size: 1.05rem !important;
+    align-items: flex-start !important;
+  }
+  
+  .install-step h3 > span:first-child,
+  .install-step h4 > span:first-child {
+    flex-shrink: 0;
   }
   
   /* Optimize Dino Loader sizing for very small viewports */
