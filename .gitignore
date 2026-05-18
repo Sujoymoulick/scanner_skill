@@ -1,0 +1,8 @@
+# Node dependencies
+node_modules/
+
+# Local cloner workspace temporary repos
+cloned-repos/
+
+# Local OS metadata files
+.DS_Store

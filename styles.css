@@ -1,0 +1,1098 @@
+/* ==========================================================================
+   CSS Design Token Variables & Setup - Retro Pixel Neubrutalism
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap');
+
+:root {
+  --font-sans: 'Share Tech Mono', 'Courier New', Courier, monospace;
+  --font-mono: 'Share Tech Mono', 'Courier New', Courier, monospace;
+  --font-pixel: 'VT323', monospace;
+
+  /* Curated Brutalist Color Palette */
+  --bg-yellow: #ffec00;       /* High-contrast retro yellow */
+  --color-black: #000000;     /* Pure pitch-black borders and text */
+  --color-white: #ffffff;     /* Brutalist solid white panel background */
+  
+  --color-text-primary: #000000;
+  --color-text-secondary: #222222;
+  --color-text-dim: #444444;
+
+  /* Neon Retro Highlight Accents */
+  --accent-cyan: #00ffff;     /* Vivid neon cyan selection */
+  --accent-pink: #ff00ff;     /* Vivid neon magenta selection */
+  --accent-green: #39ff14;    /* Glowing matrix lime green */
+  --accent-purple: #9d4edd;
+  
+  /* Neubrutalist Offsets */
+  --border-thick: 3px solid #000000;
+  --border-thin: 2px solid #000000;
+  --shadow-brutal: 4px 4px 0px #000000;
+  --shadow-brutal-large: 8px 8px 0px #000000;
+  --shadow-brutal-small: 2px 2px 0px #000000;
+
+  --transition-fast: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --container-max-width: 1200px;
+}
+
+/* ==========================================================================
+   Global Resets & Structures
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-yellow);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-yellow);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+  image-rendering: pixelated;
+}
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Custom Highlight Selection */
+::selection {
+  background: var(--accent-cyan);
+  color: var(--color-black);
+}
+
+/* Disable Glowing blobs in favor of high-fidelity flat brutalist theme */
+.glow-bg {
+  display: none;
+}
+
+/* ==========================================================================
+   Header Navigation - Brutalist Topbar
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bg-yellow);
+  border-bottom: var(--border-thick);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-pixel);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: var(--color-black);
+}
+
+.brand-logo {
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-icon {
+  color: var(--color-black);
+  stroke-width: 2.5;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  border-bottom: 2px solid var(--color-black);
+  text-decoration: none;
+}
+
+.btn-nav {
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-cyan);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-small);
+  color: var(--color-black) !important;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+.btn-nav:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000;
+  text-decoration: none;
+}
+
+.btn-nav:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.badge {
+  align-self: flex-start;
+  padding: 0.4rem 1rem;
+  border: var(--border-thick);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-brutal-small);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-sans);
+}
+
+.hero-text h1 {
+  font-family: var(--font-pixel);
+  font-size: 4.8rem;
+  line-height: 0.95;
+  font-weight: normal;
+  color: var(--color-black);
+  margin-bottom: 0.5rem;
+}
+
+.gradient-text {
+  background: var(--accent-pink);
+  color: var(--color-black);
+  padding: 0 0.5rem;
+  border: var(--border-thick);
+  background-color: var(--accent-pink);
+  box-shadow: var(--shadow-brutal-small);
+  display: inline-block;
+  transform: rotate(-1.5deg);
+}
+
+.hero-text p {
+  font-size: 1.15rem;
+  color: var(--color-black);
+  font-weight: bold;
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-brutal);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+/* Neubrutalist Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  border: var(--border-thick);
+  font-weight: bold;
+  font-size: 1.05rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--accent-cyan);
+  color: var(--color-black);
+  box-shadow: var(--shadow-brutal);
+}
+
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+  text-decoration: none;
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  box-shadow: var(--shadow-brutal);
+}
+
+.btn-secondary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+  text-decoration: none;
+}
+
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+}
+
+.btn-icon {
+  stroke-width: 2.5;
+  transition: transform 0.15s ease;
+}
+
+.btn:hover .btn-icon {
+  transform: scale(1.15);
+}
+
+/* ==========================================================================
+   Terminal Visuals & Retro 8-bit Scanning
+   ========================================================================== */
+.hero-visual {
+  perspective: 1000px;
+}
+
+.terminal {
+  background-color: var(--color-black);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-large);
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.terminal:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0px #000000;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222222;
+  padding: 0.65rem 1rem;
+  border-bottom: var(--border-thick);
+}
+
+.circles {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+}
+
+.red { background-color: #ff0055; }
+.yellow { background-color: var(--bg-yellow); }
+.green { background-color: var(--accent-green); }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.terminal-body {
+  padding: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #050505;
+}
+
+.cmd-prompt {
+  color: var(--accent-pink);
+  font-weight: bold;
+}
+
+.terminal-output {
+  opacity: 1;
+}
+
+/* Custom Output Highlight Colors */
+.text-cyan { color: var(--accent-cyan); font-weight: bold; }
+.text-purple { color: #d000ff; font-weight: bold; }
+.text-green { color: var(--accent-green); font-weight: bold; }
+.text-indigo { color: #5c7aff; font-weight: bold; }
+.text-dim { color: #888888; }
+.mt-1 { margin-top: 0.5rem; }
+
+/* Interactive Scanning Window */
+.terminal-scanner-box {
+  position: relative;
+  background-color: #000000;
+  border: 2px dashed #333333;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.terminal-mock-code {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #39ff14; /* Matrix classic green */
+}
+
+/* CRT Glowing Green Laser Scan Animation */
+.scanner-laser {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+  box-shadow: 0 0 10px var(--accent-green), 0 0 20px var(--accent-green);
+  animation: laser-scan 4s infinite linear;
+  z-index: 5;
+}
+
+@keyframes laser-scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ==========================================================================
+   Features Section - Neubrutalist Cards with Pixel Brackets
+   ========================================================================== */
+.features-section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  border-top: var(--border-thick);
+}
+
+.section-title {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section-title h2 {
+  font-family: var(--font-pixel);
+  font-size: 3.5rem;
+  font-weight: normal;
+  color: var(--color-black);
+}
+
+.section-title h2::before {
+  content: "{ ";
+  color: var(--accent-pink);
+}
+
+.section-title h2::after {
+  content: " }";
+  color: var(--accent-pink);
+}
+
+.section-title p {
+  color: var(--color-black);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.feature-card {
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-brutal);
+  transition: var(--transition-fast);
+}
+
+.feature-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px #000;
+  background-color: var(--color-white);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-yellow);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+}
+
+.card-icon svg {
+  stroke-width: 2.5;
+}
+
+.text-pink { color: var(--color-black) !important; }
+.text-orange { color: var(--color-black) !important; }
+.text-cyan { color: var(--color-black) !important; }
+.text-indigo { color: var(--color-black) !important; }
+
+.feature-card h3 {
+  font-size: 1.35rem;
+  font-weight: bold;
+  letter-spacing: -0.25px;
+}
+
+.feature-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   Interactive Showcase Playground
+   ========================================================================== */
+.showcase-section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  border-top: var(--border-thick);
+}
+
+.playground {
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal-large);
+  overflow: hidden;
+}
+
+.playground-nav {
+  display: flex;
+  background-color: var(--color-white);
+  border-bottom: var(--border-thick);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-right: var(--border-thick);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1.25rem 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tab-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.tab-btn:hover {
+  background-color: var(--bg-yellow);
+}
+
+.tab-btn.active {
+  background-color: var(--accent-cyan);
+  color: var(--color-black);
+}
+
+.playground-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 380px;
+  background-color: #000000;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-left {
+  border-right: var(--border-thick);
+}
+
+.panel-header {
+  background-color: #222222;
+  border-bottom: var(--border-thick);
+  padding: 0.85rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.panel-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  background-color: #050505;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  overflow-x: auto;
+  color: #39ff14; /* matrix green */
+}
+
+.panel-content pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Custom Markdown Rendering Colors */
+.markdown-body pre {
+  background-color: #000000 !important;
+  color: #00ffff !important;
+  border: 2px solid #000000;
+  box-shadow: var(--shadow-brutal-small);
+}
+
+/* ==========================================================================
+   How It Works Timeline - Heavy Brutalist Board
+   ========================================================================== */
+.timeline-section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  border-top: var(--border-thick);
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  position: relative;
+  margin-top: 2rem;
+}
+
+/* Flat layout line instead of gradients */
+.timeline::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 10%;
+  width: 80%;
+  height: 4px;
+  background-color: var(--color-black);
+  z-index: 1;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+.timeline-badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.35rem;
+  color: var(--color-black);
+  box-shadow: var(--shadow-brutal);
+  transition: var(--transition-fast);
+}
+
+.timeline-item:hover .timeline-badge {
+  background-color: var(--accent-cyan);
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 6px 6px 0px #000;
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal);
+}
+
+.timeline-content h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.timeline-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   Terminal Installation Banner
+   ========================================================================== */
+.terminal-section-area {
+  padding-bottom: 6rem;
+  border-top: var(--border-thick);
+  padding-top: 6rem;
+}
+
+.terminal-banner {
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  border-radius: 0;
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  box-shadow: var(--shadow-brutal-large);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: var(--accent-cyan);
+  border-right: var(--border-thick);
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.banner-text h2 {
+  font-family: var(--font-pixel);
+  font-size: 3.5rem;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+
+.banner-text p {
+  color: var(--color-black);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Copy Clipboard Widget */
+.copy-terminal-box {
+  background-color: #000000;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal);
+}
+
+.copy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background-color: #222222;
+  border-bottom: var(--border-thick);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.btn-copy {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-weight: bold;
+  transition: var(--transition-fast);
+}
+
+.btn-copy:hover {
+  color: var(--accent-cyan);
+}
+
+.btn-copy.success {
+  color: var(--accent-green);
+}
+
+.copy-body {
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent-cyan);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Footer - Solid Brutalist Black Strip
+   ========================================================================== */
+footer {
+  background-color: var(--color-black);
+  border-top: var(--border-thick);
+  padding: 3rem 0;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  font-weight: bold;
+}
+
+.footer-links a:hover {
+  color: var(--accent-cyan);
+}
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .badge {
+    align-self: center;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .playground-body {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel-left {
+    border-right: none;
+    border-bottom: var(--border-thick);
+  }
+  
+  .terminal-banner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .hero-text h1 {
+    font-size: 3.2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .timeline::after {
+    display: none;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   Consolidated Cloner Dashboard Styles
+   ========================================================================== */
+.dashboard-view-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  margin-top: 1rem;
+}
+
+.dashboard-banner {
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-brutal-large);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: var(--accent-pink);
+  border-bottom: var(--border-thick);
+}
+
+.dashboard-banner h1 {
+  font-family: var(--font-pixel);
+  font-size: 3.5rem;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.repo-link {
+  color: var(--color-black);
+  background-color: var(--accent-cyan);
+  padding: 0.2rem 0.5rem;
+  border: var(--border-thin);
+  box-shadow: var(--shadow-brutal-small);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  word-break: break-all;
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+}
+
+.instructions-card {
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-brutal-large);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.instructions-card h2 {
+  font-family: var(--font-pixel);
+  font-size: 2.5rem;
+  font-weight: normal;
+  border-bottom: var(--border-thick);
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.markdown-body {
+  color: var(--color-black);
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+.markdown-body h2 {
+  color: var(--color-black);
+  font-family: var(--font-pixel);
+  font-size: 2.2rem;
+  font-weight: normal;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  border-bottom: var(--border-thin);
+  padding-bottom: 0.4rem;
+}
+
+.markdown-body h3 {
+  color: var(--color-black);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.markdown-body pre {
+  background-color: #000000 !important;
+  border: var(--border-thick) !important;
+  box-shadow: var(--shadow-brutal) !important;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent-cyan) !important;
+}
+
+.markdown-body code {
+  font-family: var(--font-mono);
+  background-color: var(--bg-yellow);
+  border: var(--border-thin);
+  padding: 0.2rem 0.4rem;
+  font-size: 0.9em;
+  color: var(--color-black);
+}
+
+.markdown-body p { margin-bottom: 1rem; }
+
+.sidebar { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.sidebar-card {
+  background-color: var(--color-white);
+  border: var(--border-thick);
+  padding: 2rem;
+  box-shadow: var(--shadow-brutal);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sidebar-card h3 {
+  font-family: var(--font-pixel);
+  font-size: 2rem;
+  font-weight: normal;
+  border-bottom: var(--border-thick);
+  padding-bottom: 0.5rem;
+}
+
+.tech-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.tech-tag {
+  background-color: var(--bg-yellow);
+  border: var(--border-thin);
+  box-shadow: var(--shadow-brutal-small);
+  color: var(--color-black);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  font-family: var(--font-mono);
+}
+
+.tree-box {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background-color: #000000;
+  border: var(--border-thin);
+  padding: 1.25rem;
+  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
+  color: var(--accent-cyan);
+}
+
+.tree-box pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: var(--color-black);
+  font-weight: bold;
+}
+
+.stats-table td { padding: 0.6rem 0; border-bottom: var(--border-thin); }
+.stats-table td:last-child { text-align: right; font-weight: bold; color: var(--accent-pink); }

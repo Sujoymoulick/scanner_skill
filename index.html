@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codebase & File Architecture Scanner Skill</title>
+  <meta name="description" content="A zero-dependency portable developer utility to scan repositories, maps routing, dependencies, style schemas, and exports into direct high-fidelity context for LLMs.">
+  
+  <!-- Premium CSS Styling -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Markdown Render CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Dynamic Scan Injection Point -->
+  <script>
+    let activeScanData = null; // __CLONE_SCAN_INJECT_POINT__
+  </script>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <nav class="container">
+      <div class="logo" id="logo-home">
+        <img src="assets/scanner_skill logo.png" alt="Scanner Skill Logo" class="brand-logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#demo">Playground</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#terminal-section" class="btn-nav">Run Scanner</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Unified Active Cloner Dashboard Section (Visible only when running activeScanData) -->
+  <section id="active-dashboard" class="container dashboard-view-section" style="display: none;">
+    <!-- Dashboard Banner -->
+    <div class="dashboard-banner">
+      <h1>Cloned & Analyzed: <span class="gradient-text">{ <span id="repo-name-text">Loading...</span> }</span></h1>
+      <p style="margin-top: 0.85rem;">
+        Repo URL: <a href="#" target="_blank" class="repo-link" id="repo-url-link">Loading URL...</a>
+      </p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="dashboard-grid">
+      <!-- Left side: Run Instructions -->
+      <div class="instructions-card">
+        <h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-black);"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          [ setup_instructions ]
+        </h2>
+        <div class="markdown-body" id="instructions-container">
+          Loading running instructions from README...
+        </div>
+      </div>
+
+      <!-- Right side: Sidebar Info -->
+      <div class="sidebar">
+        <!-- Tech Stack -->
+        <div class="sidebar-card">
+          <h3>Detected Ecosystem</h3>
+          <div class="tech-list" id="tech-stack-container">
+            <!-- Dynamic tags -->
+          </div>
+        </div>
+
+        <!-- Directory Tree -->
+        <div class="sidebar-card">
+          <h3>Directory Structure</h3>
+          <p style="font-size: 0.85rem; color: var(--color-black); font-weight: bold; margin-top: -0.5rem; margin-bottom: 0.25rem;">
+            *Generic landing assets (index.html, style.css) automatically excluded.
+          </p>
+          <div class="tree-box">
+            <pre id="tree-container">Loading codebase tree...</pre>
+          </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="sidebar-card">
+          <h3>Project Statistics</h3>
+          <table class="stats-table">
+            <tr>
+              <td>Total Scanned Files</td>
+              <td id="stat-files">0</td>
+            </tr>
+            <tr>
+              <td>Total File Weight</td>
+              <td id="stat-weight">0 B</td>
+            </tr>
+            <tr>
+              <td>Ecosystem Type</td>
+              <td id="stat-type">Unknown</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <main class="container hero">
+    <div class="hero-text">
+      <div class="badge">⚡ Zero-Dependency Developer Tool</div>
+      <h1>Turn Any Codebase Into <span class="gradient-text">{ High-Density LLM Context }</span></h1>
+      <p>Scan local directories, isolate API routes, register stylesheet tokens, extract dependencies, and bundle it into a rich, structured markdown blueprint optimized for developers and AI agents.</p>
+      
+      <div class="hero-actions">
+        <a href="#terminal-section" class="btn btn-primary" id="btn-hero-run">
+          Run CLI Engine
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </a>
+        <a href="#demo" class="btn btn-secondary" id="btn-hero-demo">Live Playground</a>
+      </div>
+    </div>
+
+    <!-- Animated Terminal Scanner -->
+    <div class="hero-visual">
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="circles">
+            <span class="circle red"></span>
+            <span class="circle yellow"></span>
+            <span class="circle green"></span>
+          </div>
+          <div class="terminal-title">bash - codebase-scanner</div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="cmd-prompt">$</span> node scan.js</div>
+          <div class="terminal-output text-cyan">🔍 Starting generalized directory scan: /Users/sujoymoulick/scanner-skill</div>
+          <div class="terminal-output text-purple">📦 Traversing project dependencies...</div>
+          <div class="terminal-output text-purple">🚦 Scanning source code for routes and styling schemas...</div>
+          <div class="terminal-output text-purple">✏️ Structuring Project Architecture Blueprint...</div>
+          
+          <div class="terminal-scanner-box">
+            <!-- Glowing Laser Line -->
+            <div class="scanner-laser"></div>
+            
+            <div class="terminal-mock-code">
+              <div>├── 📂 <span class="text-indigo">frontend/</span></div>
+              <div>│   ├── 📂 <span class="text-indigo">src/</span></div>
+              <div>│   │   ├── 📄 <span class="text-green">App.tsx</span> <span class="text-dim">*(React Router)*</span></div>
+              <div>│   │   └── 📄 <span class="text-green">index.css</span> <span class="text-dim">*(CSS Custom Properties)*</span></div>
+              <div>├── 📂 <span class="text-indigo">backend/</span></div>
+              <div>│   └── 📄 <span class="text-green">index.js</span> <span class="text-dim">*(Express API Handlers)*</span></div>
+              <div>├── 📄 <span class="text-green">package.json</span> <span class="text-dim">*(Node Manifest)*</span></div>
+              <div>└── 📄 <span class="text-green">scan.js</span> <span class="text-dim">*(Zero-dependency Engine)*</span></div>
+            </div>
+          </div>
+          
+          <div class="terminal-output text-green mt-1">✅ Success! Blueprint generated at: ./scanner-skill.md</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Features Grid -->
+  <section id="features" class="container features-section">
+    <div class="section-title">
+      <h2>Engineered for Deep Context</h2>
+      <p>Whether analyzing a full enterprise repository or reviewing a single source script, the engine maps code outlines with surgical precision.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Card 1 -->
+      <div class="feature-card" id="feature-tree">
+        <div class="card-icon text-indigo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 14a8 8 0 0 1-8 8"/><path d="M18 11a6 6 0 0 0-6-6"/><path d="M14 2a4 4 0 0 0-4 4"/><rect x="3" y="11" width="6" height="6" rx="1"/></svg>
+        </div>
+        <h3>Directory Mapping</h3>
+        <p>Generates visual, box-drawn Unicode ASCII trees representing exact, readable file system structures.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-card" id="feature-manifests">
+        <div class="card-icon text-cyan">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Ecosystem Manifests</h3>
+        <p>Auto-detects and extracts dependencies from manifests: Node, Python, Rust, Go, Ruby, and Java.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-card" id="feature-routes">
+        <div class="card-icon text-pink">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+        <h3>Dynamic Routing</h3>
+        <p>Aggregates backend endpoints (Express, FastAPI, Django, Gin) and React Router client views into clean routing tables.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-card" id="feature-variables">
+        <div class="card-icon text-orange">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        </div>
+        <h3>CSS Custom Tokens</h3>
+        <p>Locates and tabulates global CSS variables (`--style-variable: value;`) across all styling configurations.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feature-card" id="feature-metrics">
+        <div class="card-icon text-green">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>High-Density Stats</h3>
+        <p>Computes code, comment, and empty lines, details absolute file sizes, and compiles the top 5 heaviest codebase assets.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feature-card" id="feature-deepdive">
+        <div class="card-icon text-purple">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Single-File Outlines</h3>
+        <p>Parses imports, exported modules, classes, structs, traits, and functions for direct lexical code parsing.</p>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="feature-card" id="feature-gitcloner">
+        <div class="card-icon text-cyan">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Git Cloner Integration</h3>
+        <p>Instantly clones and analyzes public repositories into isolated sandbox spaces without manual shell configurations.</p>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="feature-card" id="feature-readme-heuristics">
+        <div class="card-icon text-pink">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>README Setup Isolation</h3>
+        <p>Uses heuristic keyword scanning filters to automatically locate and parse setup guides and startup instructions.</p>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="feature-card" id="feature-active-dashboard">
+        <div class="card-icon text-indigo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Live Active Dashboard</h3>
+        <p>Hosts a local HTTP server on port 3000 to display cloned project file structures, metric summaries, and code setup instructions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo Showcase -->
+  <section id="demo" class="container showcase-section">
+    <div class="section-title">
+      <h2>Interactive Showcase</h2>
+      <p>Compare raw codebase inputs (left) with the high-density structure blueprints (right) compiled by the scanner.</p>
+    </div>
+
+    <!-- Tabs Container -->
+    <div class="playground">
+      <div class="playground-nav">
+        <button class="tab-btn active" data-target="tab-js-react" id="tab-react-btn"><img src="assets/React.png" alt="React" class="tab-logo"> React Route & Styles</button>
+        <button class="tab-btn" data-target="tab-py-server" id="tab-python-btn"><img src="assets/Python.png" alt="Python" class="tab-logo"> Python FastAPI Server</button>
+        <button class="tab-btn" data-target="tab-go-pkg" id="tab-go-btn"><img src="assets/Go.png" alt="Go" class="tab-logo"> Go Manifest & Structs</button>
+      </div>
+
+      <div class="playground-body">
+        <!-- Panel Left: Input Source Code -->
+        <div class="panel panel-left">
+          <div class="panel-header">Source Input File</div>
+          <div class="panel-content">
+            
+            <!-- React Content -->
+            <div class="tab-content active" id="tab-js-react-input">
+              <pre><code class="language-jsx">// index.css
+:root {
+  --brutal-yellow: #facc15;
+  --bg-dark: #0f172a;
+}
+
+// App.tsx
+import { Route, Routes } from 'react-router-dom';
+import Dashboard from './views/Dashboard';
+
+function App() {
+  return (
+    &lt;Routes&gt;
+      &lt;Route path="/dashboard" element={&lt;Dashboard /&gt;} /&gt;
+    &lt;/Routes&gt;
+  );
+}</code></pre>
+            </div>
+            
+            <!-- Python Content -->
+            <div class="tab-content" id="tab-py-server-input">
+              <pre><code class="language-python"># main.py
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class User(BaseModel):
+    name: str
+    email: str
+
+@app.get("/api/v1/health")
+async def get_health():
+    return {"status": "ok"}
+
+@app.post("/api/v1/users")
+async def create_user(user: User):
+    return {"message": "Created"}</code></pre>
+            </div>
+            
+            <!-- Go Content -->
+            <div class="tab-content" id="tab-go-pkg-input">
+              <pre><code class="language-go">// go.mod
+module scanner-service
+go 1.21
+require (
+	github.com/gin-gonic/gin v1.9.1
+)
+
+// server.go
+package main
+
+type Task struct {
+	ID    string `json:"id"`
+	Title string `json:"title"`
+}
+
+func GetTasks(c *gin.Context) {
+	c.JSON(200, []Task{})
+}</code></pre>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel Right: Output Markdown -->
+        <div class="panel panel-right">
+          <div class="panel-header">Generated Context (`scanner-skill.md`)</div>
+          <div class="panel-content text-dim">
+
+            <!-- React Output -->
+            <div class="tab-content active" id="tab-js-react-output">
+              <pre><code class="language-markdown">## 🚦 Dynamic Routing Map
+| Route / Endpoint | Type | Method | File Location |
+| :--- | :--- | :--- | :--- |
+| `/dashboard` ➔ `Dashboard` | **Frontend View** | `VIEW` | `App.tsx:10` |
+
+## 🎨 CSS Style Custom Variables
+| Variable Name | Assigned Value | Source File |
+| :--- | :--- | :--- |
+| `--brutal-yellow` | `#facc15` | `index.css:3` |
+| `--bg-dark` | `#0f172a` | `index.css:4` |</code></pre>
+            </div>
+
+            <!-- Python Output -->
+            <div class="tab-content" id="tab-py-server-output">
+              <pre><code class="language-markdown">## ℹ️ File Specifications
+*   **File Name**: `main.py`
+*   **Detected Language**: **Python**
+
+## 🏛️ Class & Interface Schema
+*   **`User`** (BaseModel)
+
+## ⚡ Method & Function Outline
+*   📄 **`get_health`**
+*   📄 **`create_user`**
+
+## 🚦 Dynamic Routing Map
+| Route / Endpoint | Type | Method | File Location |
+| :--- | :--- | :--- | :--- |
+| `/api/v1/health` | **Backend API** | `GET` | `main.py:12` |
+| `/api/v1/users` | **Backend API** | `POST` | `main.py:16` |</code></pre>
+            </div>
+
+            <!-- Go Output -->
+            <div class="tab-content" id="tab-go-pkg-output">
+              <pre><code class="language-markdown">## 📦 Dependencies & Manifest Breakdown
+### 📄 `go.mod` (Go Modules)
+**Project/Module Name**: `scanner-service`
+| Dependency Package | Declared Version |
+| :--- | :--- |
+| `github.com/gin-gonic/gin` | `v1.9.1` |
+
+## 🏛️ Class & Interface Schema
+*   **`Task`** (struct)
+
+## ⚡ Method & Function Outline
+*   📄 **`GetTasks`** (Exported)</code></pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Timeline -->
+  <section id="how-it-works" class="container timeline-section">
+    <div class="section-title">
+      <h2>How It Works</h2>
+      <p>Three straightforward compilation steps to establish deep codebase blueprints.</p>
+    </div>
+
+    <div class="timeline">
+      <!-- Step 1 -->
+      <div class="timeline-item" id="timeline-step-1">
+        <div class="timeline-badge">1</div>
+        <div class="timeline-content">
+          <h3>Install Scanner Skill</h3>
+          <p>Clone the skill repository into <code>scanner_skill/</code> inside your project directory. The skill dynamically configures its own non-polluting <code>.gitignore</code> footprint.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="timeline-item" id="timeline-step-2">
+        <div class="timeline-badge">2</div>
+        <div class="timeline-content">
+          <h3>Deep static Sweep</h3>
+          <p>The parser traverses imports, modules, functions, routes, design custom variables, and dependencies to structure blueprints.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="timeline-item" id="timeline-step-3">
+        <div class="timeline-badge">3</div>
+        <div class="timeline-content">
+          <h3>Context Blueprints</h3>
+          <p>Get three specialized markdown blueprints (readme.md, instruction.md, ui.md) under <code>output_scanner/</code> or run the port 3000 console.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Agent Token Saver Section -->
+  <section id="ai-token-saver" class="container timeline-section" style="border-top: var(--border-thick); padding-top: 6rem; padding-bottom: 6rem;">
+    <div class="section-title">
+      <h2>Vibe Coding Token Optimizer</h2>
+      <p>Save 90%+ of your AI context window limits during Cursor, Tabnine, or Gemini sessions.</p>
+    </div>
+
+    <!-- The Problem / Solution Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;">
+      <div style="background-color: #ffe4e6; border: var(--border-thick); padding: 2.5rem; text-align: left; box-shadow: var(--shadow-brutal);">
+        <h3 style="font-family: var(--font-mono); font-size: 1.5rem; color: #991b1b; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          ❌ The AI Vibe Coding Problem
+        </h3>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: var(--color-black);">
+          AI agents (like Cursor, Gemini, Copilot, or Antigravity) are incredibly powerful, but to solve a single issue, they must read your <strong>entire codebase multiple times</strong>. This redundant scanning rapidly consumes your context window, causing your API token limits to <strong>expire extremely quickly</strong>.
+        </p>
+      </div>
+
+      <div style="background-color: #ecfdf5; border: var(--border-thick); padding: 2.5rem; text-align: left; box-shadow: var(--shadow-brutal);">
+        <h3 style="font-family: var(--font-mono); font-size: 1.5rem; color: #065f46; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          🚀 The Codebase Blueprint Solution
+        </h3>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: var(--color-black);">
+          By running the <strong>Codebase Scanner Skill</strong> first, your entire project architecture, routing list, design variables, and manifests are compiled into three lightweight, high-density files inside <code>output_scanner/</code>. Simply point your AI agent to read <strong>only this directory</strong> to provide complete context at a fraction of the token cost!
+        </p>
+      </div>
+    </div>
+
+    <!-- Practical End-to-End Walkthrough -->
+    <div style="background-color: var(--color-white); border: var(--border-thick); padding: 4rem; box-shadow: var(--shadow-brutal-large); text-align: left;">
+      <h3 style="font-family: var(--font-pixel); font-size: 2.5rem; margin-bottom: 2rem; border-bottom: var(--border-thick); padding-bottom: 1rem; letter-spacing: 0.5px;">
+        Practical Walkthrough: Step-by-Step Example
+      </h3>
+
+      <div class="reference-installation-steps" style="display: flex; flex-direction: column; gap: 2rem;">
+        
+        <!-- Walkthrough Step A -->
+        <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">A</span>
+            Clone and navigate inside your target project repository:
+          </h4>
+          <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
+            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">git clone https://github.com/octocat/Spoon-Knife.git && cd Spoon-Knife</code>
+            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'git clone https://github.com/octocat/Spoon-Knife.git && cd Spoon-Knife')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Walkthrough Step B -->
+        <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">B</span>
+            Clone the codebase scanner skill directly into the project:
+          </h4>
+          <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
+            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill</code>
+            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Walkthrough Step C -->
+        <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">C</span>
+            Navigate inside, install dependencies, and execute the scan:
+          </h4>
+          <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
+            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">cd scanner_skill && npm install && node scan.js</code>
+            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'cd scanner_skill && npm install && node scan.js')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Walkthrough Step D -->
+        <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">D</span>
+            Feed high-density output blueprints directly to your AI agent:
+          </h4>
+          <p style="font-size: 1.05rem; line-height: 1.6; color: var(--color-black); margin-left: 2.5rem; margin-top: 0;">
+            The scanner automatically parses the project and outputs three specialized, high-fidelity blueprints under <code>output_scanner/</code> inside the cloned repo root:
+          </p>
+          <ul style="list-style-type: square; margin-left: 4.5rem; font-size: 1.05rem; color: var(--color-black); line-height: 1.8;">
+            <li><code>output_scanner/readme.md</code> (Complete project metrics and folder topologies)</li>
+            <li><code>output_scanner/ui.md</code> (API endpoint routing and stylesheet Custom Variables)</li>
+            <li><code>output_scanner/instruction.md</code> (Step-by-step startup checklists and running roadmaps)</li>
+          </ul>
+          <p style="font-size: 1.05rem; line-height: 1.6; color: var(--color-black); margin-left: 2.5rem; margin-top: 0.5rem; font-weight: bold;">
+            🎉 Success! Simply prompt Cursor or Tabnine to read this folder first, and work with 100% architectural context while saving up to 90% of your token usage!
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Terminal Section -->
+  <section id="terminal-section" class="container terminal-section-area">
+    <div class="terminal-banner" style="display: block; padding: 4rem;">
+      <div class="banner-text" style="margin-bottom: 3rem; border-bottom: var(--border-thick); padding-bottom: 2rem;">
+        <h2 style="margin-bottom: 1rem; font-size: 3rem;">Universal Prompt to Install the Skill</h2>
+        <p style="font-size: 1.25rem; color: var(--color-black); font-weight: normal; line-height: 1.6;">Follow these simple steps or paste the prompt to your AI coding assistant (Cursor, Tabnine, etc.) to configure the skill instantly:</p>
+      </div>
+
+      <!-- Block A: AI Agent Installation Prompt -->
+      <div class="ai-agent-prompt-block" style="margin-bottom: 5rem; text-align: left;">
+        <h3 style="font-family: var(--font-pixel); font-size: 2.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;">
+          🤖 AI Agent Installation Prompt
+        </h3>
+        <p style="font-size: 1.15rem; color: var(--color-black); margin-bottom: 2rem; line-height: 1.6;">
+          Copy and paste this instruction set directly into popular AI tools (<strong>Cursor Composer/Chat, Tabnine, VS Code Copilot, Windsurf, or Gemini</strong>) to let the AI automatically set up and run the scanner skill for you:
+        </p>
+        
+        <div class="ref-copy-box" style="position: relative; background-color: #f8fafc; border: var(--border-thick); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; box-shadow: var(--shadow-brutal); text-align: left;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--border-thin); padding-bottom: 1rem; margin-bottom: 0.5rem;">
+            <span style="font-family: var(--font-mono); font-weight: bold; color: var(--color-black); font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem;">
+              ⚡ Copypasta Agent Prompt
+            </span>
+            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, document.getElementById('ai-prompt-text').innerText)" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Prompt</span>
+            </button>
+          </div>
+          <pre id="ai-prompt-text" style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--color-black); font-weight: bold; white-space: pre-wrap; line-height: 1.8; margin: 0; word-break: break-all;">Please install the Codebase Scanner Skill inside my project by running the following commands in order:
+1. Open a terminal inside the project root workspace.
+2. Clone the scanner skill repository:
+   git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill
+3. Navigate inside the folder:
+   cd scanner_skill
+4. Install dependencies:
+   npm install
+5. Scan my repository dynamically to generate the high-density output blueprints:
+   node scan.js</pre>
+        </div>
+      </div>
+
+      <div style="border-top: var(--border-thick); margin-top: 4rem; margin-bottom: 4rem;"></div>
+
+      <!-- Block B: Manual Installation Process -->
+      <div class="manual-installation-block" style="text-align: left;">
+        <h3 style="font-family: var(--font-pixel); font-size: 2.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+          🛠️ Manual Process
+        </h3>
+        <p style="font-size: 1.15rem; color: var(--color-black); margin-bottom: 2.5rem; line-height: 1.6;">
+          Prefer doing it yourself? Open a terminal inside your target project workspace and execute the universal commands sequentially:
+        </p>
+
+        <div class="reference-installation-steps" style="display: flex; flex-direction: column; gap: 2rem; text-align: left;">
+          
+          <!-- Step 1 -->
+          <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">1</span>
+              Open a terminal <span style="font-weight: normal; color: var(--color-text-dim);">inside your target project workspace.</span>
+            </h3>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">2</span>
+              Run the clone command <span style="font-weight: normal; color: var(--color-text-dim);">to download the scanner skill into a dedicated directory:</span>
+            </h3>
+            <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
+              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill</code>
+              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'git clone https://github.com/sujoymoulick/scanner-skill.git scanner_skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">3</span>
+              Navigate inside the cloned folder:
+            </h3>
+            <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
+              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">cd scanner_skill</code>
+              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'cd scanner_skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">4</span>
+              Install workspace dependencies:
+            </h3>
+            <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
+              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">npm install</code>
+              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'npm install')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">5</span>
+              Scan any GitHub Repository dynamically:
+            </h3>
+            <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
+              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">node scan.js</code>
+              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'node scan.js')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>Codebase Scanner Skill Engine © 2026. Zero dependencies and optimized for high-context AI operations.</p>
+      <div class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#demo">Playground</a>
+        <a href="#how-it-works">Timeline</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Interactions -->
+  <script>
+    // 1. Interactive Showcase Tab Switching Logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const target = tab.getAttribute('data-target');
+
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+        });
+
+        document.getElementById(`${target}-input`).classList.add('active');
+        document.getElementById(`${target}-output`).classList.add('active');
+      });
+    });
+    // 2. Individual Command Copy Actions
+    function copyIndividualCmd(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const svg = btn.querySelector('svg');
+        const span = btn.querySelector('span');
+        const originalText = span.innerText;
+        span.innerText = 'Copied!';
+        btn.style.backgroundColor = '#2563eb'; // Deep premium blue for success feedback
+        btn.style.color = '#ffffff';
+        btn.style.borderColor = '#2563eb';
+        
+        setTimeout(() => {
+          span.innerText = originalText;
+          btn.style.backgroundColor = 'var(--color-black)';
+          btn.style.color = 'var(--color-white)';
+          btn.style.borderColor = 'var(--color-black)';
+        }, 1500);
+      }).catch(err => {
+        console.error('Failed to copy command: ', err);
+      });
+    }
+
+    // 3. Dynamic Active Scan Dashboard Configurator
+    if (activeScanData) {
+      const heroSec = document.querySelector('main.hero');
+      if (heroSec) heroSec.style.display = 'none';
+
+      const dashSec = document.getElementById('active-dashboard');
+      if (dashSec) dashSec.style.display = 'block';
+
+      document.getElementById('repo-name-text').innerText = activeScanData.repoName;
+      document.getElementById('repo-url-link').innerText = activeScanData.repoUrl;
+      document.getElementById('repo-url-link').href = activeScanData.repoUrl;
+      
+      document.getElementById('instructions-container').innerHTML = marked.parse(activeScanData.instructions);
+
+      const techContainer = document.getElementById('tech-stack-container');
+      if (techContainer) {
+        techContainer.innerHTML = '';
+        if (activeScanData.technologies.length === 0) {
+          techContainer.innerHTML = '<span style="font-style: italic; color: var(--color-black);">No ecosystem dependencies parsed.</span>';
+        } else {
+          activeScanData.technologies.forEach(tech => {
+            const tag = document.createElement('span');
+            tag.className = 'tech-tag';
+            tag.innerText = tech;
+            techContainer.appendChild(tag);
+          });
+        }
+      }
+
+      document.getElementById('stat-files').innerText = activeScanData.stats.filesCount;
+      document.getElementById('stat-weight').innerText = activeScanData.stats.totalWeight;
+      document.getElementById('stat-type').innerText = activeScanData.stats.ecosystemType;
+
+      document.getElementById('tree-container').innerText = activeScanData.tree;
+    }
+  </script>
+</body>
+</html>
