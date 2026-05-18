@@ -19,6 +19,16 @@
 </head>
 <body>
 
+  <!-- Retro Chrome Dino Loader Overlay -->
+  <div id="dino-loader" class="dino-loader-overlay">
+    <div class="dino-game-container">
+      <div class="cloud-background"></div>
+      <div class="cactus-obstacle"></div>
+      <div class="dino-runner"></div>
+    </div>
+    <div id="dino-status-text" class="loader-status-text">REDIRECTING...</div>
+  </div>
+
   <!-- Header Navigation -->
   <header>
     <nav class="container">
@@ -842,6 +852,72 @@ func GetTasks(c *gin.Context) {
 
       document.getElementById('tree-container').innerText = activeScanData.tree;
     }
+
+    // Intercept Links for Retro Dinosaur Loading Animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const loader = document.getElementById('dino-loader');
+      if (loader) {
+        // Initial setup - hide the loader from displaying raw
+        loader.style.display = 'none';
+        loader.style.opacity = '0';
+      }
+
+      // Add click interceptors to all anchors
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          
+          // Show loader for external portfolio links or section smooth jumps
+          if (href && (href.startsWith('http') || href.includes('sujoymoulick') || href.startsWith('#'))) {
+            // Ignore blank or dummy links
+            if (href === '#' || href === '#!') return;
+
+            e.preventDefault();
+            
+            if (loader) {
+              const statusText = document.getElementById('dino-status-text');
+              
+              // Set customized retro loading messages
+              if (href.includes('sujoymoulick.online')) {
+                statusText.innerText = 'LOADING SUJOY\'S PORTFOLIO...';
+              } else if (href === '#about-developer') {
+                statusText.innerText = 'LOCATING THE DEVELOPER...';
+              } else if (href === '#features') {
+                statusText.innerText = 'LOADING FEATURES MATRIX...';
+              } else if (href === '#demo') {
+                statusText.innerText = 'INITIALIZING PLAYGROUND...';
+              } else if (href === '#how-it-works') {
+                statusText.innerText = 'LOADING TIMELINE PIPELINE...';
+              } else if (href === '#terminal-section') {
+                statusText.innerText = 'CONNECTING TERMINAL CONTROLLER...';
+              } else {
+                statusText.innerText = 'REDIRECTING TO TARGET...';
+              }
+              
+              loader.style.display = 'flex';
+              // Force reflow for transitions
+              loader.offsetHeight; 
+              loader.style.opacity = '1';
+              
+              setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                  loader.style.display = 'none';
+                  if (href.startsWith('#')) {
+                    const targetEl = document.querySelector(href);
+                    if (targetEl) {
+                      targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  } else {
+                    window.open(href, '_blank');
+                  }
+                }, 300);
+              }, 1600); // 1.6 seconds of beautiful retro Chrome dino jumping animation
+            }
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
