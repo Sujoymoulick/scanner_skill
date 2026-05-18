@@ -1205,3 +1205,157 @@ footer {
   0% { opacity: 0.4; }
   100% { opacity: 1; }
 }
+
+/* Neubrutalist Responsive Utilities & Mobile Fixes */
+.vibe-coding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.developer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  text-align: left;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .vibe-coding-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .developer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Dynamic Navigation Stacking (Prevents Nav links from disappearing!) */
+  nav.container {
+    flex-direction: column;
+    height: auto;
+    padding: 1.5rem 1rem;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  
+  .nav-links {
+    display: flex !important; /* Force override display none */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .nav-links li a {
+    font-size: 0.9rem;
+  }
+  
+  /* Prevent large section paddings from squeezing viewport content */
+  .timeline-section,
+  #about-developer,
+  #ai-token-saver,
+  #features,
+  #demo {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  
+  .section-title h2 {
+    font-size: 2.5rem !important;
+  }
+  
+  /* Fix Playground responsive tabs layout */
+  .playground-nav {
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 0.85rem 1rem !important;
+    font-size: 0.85rem !important;
+    border-bottom: var(--border-thick);
+    border-right: var(--border-thick) !important;
+  }
+  
+  /* Fix dashboard inner layouts on mobile */
+  .dashboard-banner {
+    padding: 1.75rem !important;
+  }
+  
+  .dashboard-banner h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  .instructions-card {
+    padding: 1.75rem !important;
+  }
+  
+  .instructions-card h2 {
+    font-size: 2rem !important;
+  }
+  
+  .sidebar-card {
+    padding: 1.5rem !important;
+  }
+  
+  .sidebar-card h3 {
+    font-size: 1.75rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Copy-paste containers mobile stacking */
+  .ref-copy-box {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
+  }
+  
+  .ref-btn-copy {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .ref-code {
+    word-break: break-all;
+    white-space: normal;
+    text-align: center;
+  }
+  
+  /* Optimize Dino Loader sizing for very small viewports */
+  .dino-game-wrapper {
+    padding: 2rem 1.25rem !important;
+  }
+  
+  .dino-game-container {
+    height: 120px !important;
+  }
+  
+  .dino-runner {
+    width: 34px !important;
+    height: 37px !important;
+  }
+  
+  .cactus-obstacle {
+    width: 18px !important;
+    height: 38px !important;
+  }
+  
+  .cloud-background {
+    width: 36px !important;
+    height: 14px !important;
+  }
+  
+  .loader-status-text {
+    font-size: 1.35rem !important;
+  }
+}
