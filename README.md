@@ -6,10 +6,10 @@
 
 Welcome to the ultimate codebase blueprint for **scanner-skill**. This document compiles high-density specifications, dynamic routing schemes, custom styling design tokens, file topologies, repository statistics, and step-by-step extension roadmaps in a single unified entrypoint.
 
-*   **Primary Ecosystem**: **General Project**
-*   **Total Files Count**: 5 scanned files
-*   **Combined Size**: 159.5 KB
-<img width="1904" height="991" alt="Screenshot 2026-05-18 at 12 41 07 PM" src="https://github.com/user-attachments/assets/b4d0480e-3a4f-4a0f-a040-ba69d657cf9e" />
+*   **Primary Ecosystem**: **Node.js (JS/TS)**
+*   **Total Files Count**: 6 scanned files
+*   **Combined Size**: 158.6 KB
+
 ---
 
 ## 🌟 Discovered Architecture Layers
@@ -59,14 +59,20 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 
 ## 📦 Dependencies & Manifest Breakdown
 
-*No dependency manifests detected (e.g. package.json, requirements.txt, Cargo.toml).*
+### 📄 `package.json` (Node/JS/TS)
+**Project/Module Name**: `@sujoymoulick/scanner-skill`
+
+*No active dependencies declared in this manifest.*
+
+
 ---
 
 ## 🏗️ Codebase Directory Tree
 ```text
 ├── 📄 .gitignore (171 B)
-├── 📄 index.html (54.2 KB)
-├── 📄 README.md (9.4 KB)
+├── 📄 index.html (52 KB)
+├── 📄 package.json (1 KB)
+├── 📄 README.md (9.6 KB)
 ├── 📄 scan.js (63.7 KB)
 └── 📄 styles.css (32.1 KB)
 ```
@@ -79,19 +85,20 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 | File Extension | File Count | Combined Size | Total Lines |
 | :--- | :--- | :--- | :--- |
 | `` () | 1 | 171 B | N/A |
-| `.html` (HTML) | 1 | 54.2 KB | 955 |
-| `.md` (Markdown) | 1 | 9.4 KB | 186 |
-| `.js` (JavaScript) | 1 | 63.7 KB | 1714 |
+| `.html` (HTML) | 1 | 52 KB | 931 |
+| `.json` (JSON) | 1 | 1 KB | 46 |
+| `.md` (Markdown) | 1 | 9.6 KB | 187 |
+| `.js` (JavaScript) | 1 | 63.7 KB | 1715 |
 | `.css` (CSS) | 1 | 32.1 KB | 1535 |
 
 ### 🔝 Top 5 Largest Files
 | File Path | Size | File Type |
 | :--- | :--- | :--- |
 | [`scan.js`](file:///Users/sujoymoulick/scanner-skill/scan.js) | 63.7 KB | `JavaScript` |
-| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 54.2 KB | `HTML` |
+| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 52 KB | `HTML` |
 | [`styles.css`](file:///Users/sujoymoulick/scanner-skill/styles.css) | 32.1 KB | `CSS` |
-| [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 9.4 KB | `Markdown` |
-| [`.gitignore`](file:///Users/sujoymoulick/scanner-skill/.gitignore) | 171 B | `` |
+| [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 9.6 KB | `Markdown` |
+| [`package.json`](file:///Users/sujoymoulick/scanner-skill/package.json) | 1 KB | `JSON` |
 
 ---
 
@@ -101,7 +108,10 @@ Follow these steps to safely initialize, develop, and extend this project:
 
 ### Phase 1: Environment Setup
 1.  **Clone / Checkout**: Ensure all workspace files are available locally.
-2.  **Standard Environment**: Verify dependencies and package managers corresponding to **General Project**.
+2.  **Node Environment**: Verify Node.js (v16+) is loaded. Install dependencies:
+    ```bash
+    npm install
+    ```
 3.  **Environment Variables**: Create a `.env` file in the root if the project requires credentials or API urls.
 
 ### Phase 2: Codebase Extension & Development Instructions
@@ -125,7 +135,9 @@ When expanding codebase capabilities, respect the following design guidelines:
 
 ### Phase 3: Testing & Code Verification
 1.  **Local Dev Server**: Boot the application locally to test additions.
-    Verify startup scripts inside source files.
+    ```bash
+    npm run dev
+    ```
 2.  **Linting & Style Checks**: Run code checks to avoid runtime regressions.
 3.  **Unit Tests**: Build custom unit testing scripts (e.g., Jest, PyTest, go test) in a dedicated `tests/` folder.
 

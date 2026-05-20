@@ -421,8 +421,8 @@ func GetTasks(c *gin.Context) {
       <div class="timeline-item" id="timeline-step-1">
         <div class="timeline-badge">1</div>
         <div class="timeline-content">
-          <h3>Install Scanner Skill</h3>
-          <p>Clone the skill repository into <code>scanner_skill/</code> inside your project directory. The skill dynamically configures its own non-polluting <code>.gitignore</code> footprint.</p>
+          <h3>Run via npm/npx</h3>
+          <p>Run the scanner instantly with a single <code>npx</code> command inside your repository, or install it as a development dependency via <code>npm</code>.</p>
         </div>
       </div>
 
@@ -486,11 +486,11 @@ func GetTasks(c *gin.Context) {
         <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
           <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
             <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">A</span>
-            Clone and navigate inside your target project repository:
+            Navigate inside your project repository:
           </h4>
           <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
-            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">git clone https://github.com/octocat/Spoon-Knife.git && cd Spoon-Knife</code>
-            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'git clone https://github.com/octocat/Spoon-Knife.git && cd Spoon-Knife')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">cd my-project</code>
+            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'cd my-project')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
@@ -501,11 +501,11 @@ func GetTasks(c *gin.Context) {
         <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
           <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
             <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">B</span>
-            Clone the codebase scanner skill directly into the project:
+            Execute the scanner instantly using npx:
           </h4>
           <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
-            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill</code>
-            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">npx @sujoymoulick/scanner-skill</code>
+            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'npx @sujoymoulick/scanner-skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
@@ -516,11 +516,11 @@ func GetTasks(c *gin.Context) {
         <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
           <h4 style="font-size: 1.2rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
             <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">C</span>
-            Navigate inside, install dependencies, and execute the scan:
+            (Optional) Install as a development dependency:
           </h4>
           <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
-            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">cd scanner_skill && npm install && node scan.js</code>
-            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'cd scanner_skill && npm install && node scan.js')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+            <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">npm install -D @sujoymoulick/scanner-skill</code>
+            <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'npm install -D @sujoymoulick/scanner-skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
@@ -581,19 +581,10 @@ func GetTasks(c *gin.Context) {
           <!-- Code Body -->
           <div class="editor-code-body">
             <pre id="ai-prompt-text">// system_prompt.txt
-Please install the Codebase Scanner Skill inside my project by running the following commands in order:
+Please execute the Codebase Scanner Skill inside my project to analyze the architecture and dependencies by running:
 
-// Step 1 & 2: Clone repository
-git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill
-
-// Step 3: Navigate inside
-cd scanner_skill
-
-// Step 4: Install dependencies
-npm install
-
-// Step 5: Scan repository dynamically
-node scan.js</pre>
+// Run the scanner instantly using npx
+npx @sujoymoulick/scanner-skill</pre>
           </div>
         </div>
       </div>
@@ -623,11 +614,11 @@ node scan.js</pre>
           <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
             <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">2</span>
-              Run the clone command <span style="font-weight: normal; color: var(--color-text-dim);">to download the scanner skill into a dedicated directory:</span>
+              Option A: Run instantly without installing <span style="font-weight: normal; color: var(--color-text-dim);">using npx:</span>
             </h3>
             <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
-              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill</code>
-              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">npx @sujoymoulick/scanner-skill</code>
+              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'npx @sujoymoulick/scanner-skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                 <span>Copy</span>
               </button>
@@ -638,11 +629,11 @@ node scan.js</pre>
           <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
             <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">3</span>
-              Navigate inside the cloned folder:
+              Option B: Install as a local devDependency <span style="font-weight: normal; color: var(--color-text-dim);">for codebase integration:</span>
             </h3>
             <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
-              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">cd scanner_skill</code>
-              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'cd scanner_skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">npm install --save-dev @sujoymoulick/scanner-skill</code>
+              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'npm install --save-dev @sujoymoulick/scanner-skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                 <span>Copy</span>
               </button>
@@ -653,26 +644,11 @@ node scan.js</pre>
           <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
             <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
               <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">4</span>
-              Install workspace dependencies:
+              Execute local installation <span style="font-weight: normal; color: var(--color-text-dim);">using npx:</span>
             </h3>
             <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
-              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">npm install</code>
-              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'npm install')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span>Copy</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="install-step" style="display: flex; flex-direction: column; gap: 0.75rem;">
-            <h3 style="font-size: 1.25rem; color: var(--color-black); font-weight: bold; display: flex; align-items: center; gap: 0.75rem;">
-              <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: var(--color-black); color: var(--color-white); border-radius: 50%; font-size: 0.95rem; font-family: var(--font-mono); font-weight: bold;">5</span>
-              Scan any GitHub Repository dynamically:
-            </h3>
-            <div class="ref-copy-box" style="position: relative; background-color: #f5f6f8; border: var(--border-thin); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-brutal-small); transition: var(--transition-fast);">
-              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">node scan.js</code>
-              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'node scan.js')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
+              <code class="ref-code" style="font-family: var(--font-mono); font-size: 1rem; color: var(--color-black); font-weight: bold; word-break: break-all;">npx scanner-skill</code>
+              <button class="ref-btn-copy" onclick="copyIndividualCmd(this, 'npx scanner-skill')" style="background: var(--color-black); color: var(--color-white); border: var(--border-thin); padding: 0.5rem 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                 <span>Copy</span>
               </button>
