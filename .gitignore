@@ -6,6 +6,7 @@ cloned-repos/
 
 # Local test footprint runs
 scanner_skill/
+output_scanner/
 
 # Local OS metadata files
 .DS_Store

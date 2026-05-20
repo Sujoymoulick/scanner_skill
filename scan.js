@@ -48,7 +48,8 @@ const IGNORE_DIRS = new Set([
   'target',
   'out',
   'scanner_skill',
-  'cloned-repos'
+  'cloned-repos',
+  'output_scanner'
 ]);
 
 const IGNORE_EXTS = new Set([
@@ -1827,11 +1828,56 @@ async function run() {
       const { list: technologies, mainEcosystem: ecosystemType } = extractTechnologies(filesList, targetPath);
       stats.ecosystemType = ecosystemType;
       
+      console.log(`📝 Isolating setup instructions from README.md...`);
+      const instructions = extractRunInstructions(targetPath);
+
       console.log(`✏️ Compiling Unified Project Blueprint...`);
-      const singleReadmeMd = generateSingleReadme(targetPath, path.basename(targetPath), '', tree, manifests, routes, cssVariables, stats, '');
+      const repoName = path.basename(targetPath);
+      const singleReadmeMd = generateSingleReadme(targetPath, repoName, '', tree, manifests, routes, cssVariables, stats, instructions);
       const modernReadmePath = path.join(targetPath, 'README.md');
       fs.writeFileSync(modernReadmePath, singleReadmeMd, 'utf8');
       console.log(`✅ Success! Unified README.md generated at: ${modernReadmePath}`);
+
+      // Generate instruction.md and ui.md inside output_scanner/ folder
+      const outputScannerDir = path.join(targetPath, 'output_scanner');
+      if (!fs.existsSync(outputScannerDir)) {
+        fs.mkdirSync(outputScannerDir, { recursive: true });
+      }
+
+      // Copy logo asset so markdown relative paths work
+      const srcLogo = path.join(__dirname, 'assets', 'scanner_skill logo.png');
+      const destLogoDir = path.join(outputScannerDir, 'assets');
+      if (fs.existsSync(srcLogo)) {
+        if (!fs.existsSync(destLogoDir)) {
+          fs.mkdirSync(destLogoDir, { recursive: true });
+        }
+        try {
+          fs.copyFileSync(srcLogo, path.join(destLogoDir, 'scanner_skill logo.png'));
+        } catch (e) {}
+      }
+
+      fs.writeFileSync(
+        path.join(outputScannerDir, 'readme.md'),
+        generateReadmeMarkdown(repoName, '', stats, tree, manifests),
+        'utf8'
+      );
+      fs.writeFileSync(
+        path.join(outputScannerDir, 'instruction.md'),
+        generateInstructionMarkdown(repoName, stats, instructions, '', tree),
+        'utf8'
+      );
+      fs.writeFileSync(
+        path.join(outputScannerDir, 'ui.md'),
+        generateUiMarkdown(repoName, routes, cssVariables, stats),
+        'utf8'
+      );
+
+      console.log(`\n============================================================`);
+      console.log(`✅ Success! Extracted project details into output_scanner/!`);
+      console.log(`📄 README: ${path.join(outputScannerDir, 'readme.md')}`);
+      console.log(`📄 Instructions: ${path.join(outputScannerDir, 'instruction.md')}`);
+      console.log(`📄 UI: ${path.join(outputScannerDir, 'ui.md')}`);
+      console.log('============================================================\n');
     } else {
       console.log(`🔍 Starting deep single-file lexical scan: ${targetPath}`);
       const analysis = scanSingleFile(targetPath);
