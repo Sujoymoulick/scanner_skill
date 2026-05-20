@@ -1532,3 +1532,145 @@ footer {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+/* Neubrutalist PDF Action Button Styling */
+.btn-pdf {
+  background-color: var(--bg-yellow) !important;
+  color: var(--color-black) !important;
+  border: var(--border-thick) !important;
+  box-shadow: var(--shadow-brutal) !important;
+}
+
+.btn-pdf:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px #000 !important;
+  text-decoration: none !important;
+}
+
+.btn-pdf:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px #000 !important;
+}
+
+/* Print Layout Styling Rules */
+@media print {
+  /* Set color system print friendly */
+  :root {
+    --bg-yellow: #ffffff;
+    --color-white: #ffffff;
+    --color-black: #000000;
+  }
+  
+  html, body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt !important;
+  }
+
+  /* Hide navigation, buttons, loader and other landing elements */
+  header,
+  footer,
+  .btn,
+  .pdf-card,
+  #dino-loader,
+  main.hero,
+  #features,
+  #demo,
+  #how-it-works,
+  #ai-token-saver,
+  #terminal-section,
+  #about-developer {
+    display: none !important;
+  }
+
+  /* Force dashboard container to occupy full width */
+  #active-dashboard {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .dashboard-banner {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 0 1rem 0 !important;
+    margin-bottom: 2rem !important;
+    border-bottom: 2px solid #000000 !important;
+  }
+  
+  .dashboard-banner::before {
+    display: none !important;
+  }
+
+  /* Make grid a block layout so it prints beautifully across pages */
+  .dashboard-grid {
+    display: block !important;
+  }
+
+  .instructions-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .sidebar {
+    display: block !important;
+    margin-top: 3rem !important;
+    page-break-before: always; /* Force tree structure and stats on the next page if they don't fit */
+  }
+
+  .sidebar-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-bottom: 2rem !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .tree-box {
+    background-color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    font-size: 9pt !important;
+  }
+  
+  .tree-box pre {
+    color: #000000 !important;
+    white-space: pre-wrap !important;
+  }
+
+  .markdown-body pre {
+    background-color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    white-space: pre-wrap !important;
+  }
+  
+  .markdown-body code {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #cccccc !important;
+    color: #000000 !important;
+  }
+
+  /* Page break rules for professional layout */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  p, pre, table, ul, ol {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

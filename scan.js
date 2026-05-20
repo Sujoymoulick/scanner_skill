@@ -792,6 +792,37 @@ function generateSingleReadme(targetPath, repoName, repoUrl, tree, manifests, ro
   md += `*   **Combined Size**: ${formatBytes(stats.totalSizeBytes)}\n\n`;
 
   md += `---\n\n`;
+  md += `## 📦 Installation & Quick Start\n\n`;
+  md += `You can run and install **scanner-skill** using \`npx\` or via global/local \`npm\` installations:\n\n`;
+  md += `### 1. Run Instantly via \`npx\` (No Installation Needed)\n`;
+  md += `To scan your current local directory and initialize the AI agent skill:\n`;
+  md += `\`\`\`bash\n`;
+  md += `npx @sujoymoulick/scanner-skill\n`;
+  md += `\`\`\`\n`;
+  md += `To scan a remote GitHub repository and launch the interactive local web dashboard:\n`;
+  md += `\`\`\`bash\n`;
+  md += `npx @sujoymoulick/scanner-skill <github-repo-url>\n`;
+  md += `\`\`\`\n\n`;
+  md += `### 2. Global Installation\n`;
+  md += `To install the CLI tool globally on your system:\n`;
+  md += `\`\`\`bash\n`;
+  md += `npm install -g @sujoymoulick/scanner-skill\n`;
+  md += `\`\`\`\n`;
+  md += `Now you can execute the command from any workspace directory:\n`;
+  md += `\`\`\`bash\n`;
+  md += `scanner-skill [path-to-file-or-dir | github-repo-url]\n`;
+  md += `\`\`\`\n\n`;
+  md += `### 3. Local Dev Dependency\n`;
+  md += `To integrate it directly inside an existing codebase:\n`;
+  md += `\`\`\`bash\n`;
+  md += `npm install --save-dev @sujoymoulick/scanner-skill\n`;
+  md += `\`\`\`\n`;
+  md += `And execute via:\n`;
+  md += `\`\`\`bash\n`;
+  md += `npx scanner-skill\n`;
+  md += `\`\`\`\n\n`;
+
+  md += `---\n\n`;
   md += `## 🌟 Discovered Architecture Layers\n\n`;
   
   let backendRoutes = routes.filter(r => r.type.toLowerCase().includes('api') || r.type.toLowerCase().includes('backend'));
@@ -980,15 +1011,14 @@ function generateSingleReadme(targetPath, repoName, repoUrl, tree, manifests, ro
   md += `\n---\n\n`;
   md += `## 💡 **Vibe Coding & AI Agent Token Optimization**\n\n`;
   md += `> [!TIP]\n`;
-  md += `> **Token Saver Advantage**: AI agents (like Cursor, Gemini, Tabnine, and Copilot) have limited context window allocations and API limits. Running this scanner compiles your repository into lightweight blueprints inside \`output_scanner/\`. Directing your AI agent to read **only this directory** provides 100% architectural and routing context while **saving up to 90%+ of tokens**!\n\n`;
+  md += `> **Token Saver Advantage**: AI agents (like Cursor, Gemini, Tabnine, and Copilot) have limited context window allocations and API limits. Running this scanner compiles your repository into lightweight blueprints. Directing your AI agent to read **only this directory** provides 100% architectural and routing context while **saving up to 90%+ of tokens**!\n\n`;
   md += `### 🚀 Step-by-Step Vibe Coding Walkthrough:\n`;
-  md += `1. **Clone your target repository**:\n`;
-  md += `   \`\`\`bash\n   git clone <target-repo-url> && cd <target-folder-name>\n   \`\`\`\n`;
-  md += `2. **Clone the Codebase Scanner Skill** directly inside it:\n`;
-  md += `   \`\`\`bash\n   git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill\n   \`\`\`\n`;
-  md += `3. **Set up & Execute the static sweep**:\n`;
-  md += `   \`\`\`bash\n   cd scanner_skill && npm install && node scan.js\n   \`\`\`\n`;
-  md += `4. **Feed the Blueprints to your AI Agent**: Direct your assistant to read the compiled files under \`output_scanner/\` (e.g. \`readme.md\`, \`ui.md\`, \`instruction.md\`) to code with absolute architectural clarity at a fraction of the token cost!\n\n`;
+  md += `1. **Navigate to your target repository**:\n`;
+  md += `   \`\`\`bash\n   cd <target-folder-name>\n   \`\`\`\n`;
+  md += `2. **Execute the static sweep** via \`npx\`:\n`;
+  md += `   \`\`\`bash\n   npx @sujoymoulick/scanner-skill\n   \`\`\`\n`;
+  md += `   *(Alternatively, if installed globally, simply run \`scanner-skill\`)*\n`;
+  md += `3. **Feed the Blueprints to your AI Agent**: Direct your assistant to read the compiled files under \`scanner_skill/\` to code with absolute architectural clarity at a fraction of the token cost!\n\n`;
 
   md += `\n---\n\n`;
   md += `## 👤 About the Developer\n\n`;
@@ -1049,6 +1079,27 @@ function ensureSelfInstallation() {
       });
     } catch (err) {
       console.warn('⚠️ Warning: Failed to copy assets folder to scanner_skill:', err.message);
+    }
+  }
+
+  // Copy templates folder
+  const srcTemplates = path.join(__dirname, 'templates');
+  const destTemplates = path.join(targetDir, 'templates');
+  if (fs.existsSync(srcTemplates)) {
+    if (!fs.existsSync(destTemplates)) {
+      fs.mkdirSync(destTemplates, { recursive: true });
+    }
+    try {
+      const templates = fs.readdirSync(srcTemplates);
+      templates.forEach(tpl => {
+        const srcTpl = path.join(srcTemplates, tpl);
+        const destTpl = path.join(destTemplates, tpl);
+        if (fs.statSync(srcTpl).isFile()) {
+          fs.copyFileSync(srcTpl, destTpl);
+        }
+      });
+    } catch (err) {
+      console.warn('⚠️ Warning: Failed to copy templates folder to scanner_skill:', err.message);
     }
   }
 
@@ -1213,15 +1264,14 @@ function generateReadmeMarkdown(repoName, repoUrl, stats, tree, manifests) {
   md += `\n---\n\n`;
   md += `## 🤖 **AI Agent Context Window & Token Optimization**\n\n`;
   md += `> [!IMPORTANT]\n`;
-  md += `> **Vibe Coding Token Saver**: AI agents (like Cursor, Gemini, Tabnine, and Copilot) have tight context windows and API token limits. If they scan your entire codebase repeatedly during interactive editing sessions, your token allowance will expire very quickly. By feeding the AI agent **only** the three compiled blueprints inside the \`output_scanner/\` directory, you provide 100% architectural and routing context while **saving up to 90%+ of tokens**!\n\n`;
+  md += `> **Vibe Coding Token Saver**: AI agents (like Cursor, Gemini, Tabnine, and Copilot) have tight context windows and API token limits. If they scan your entire codebase repeatedly during interactive editing sessions, your token allowance will expire very quickly. By feeding the AI agent **only** the compiled blueprints, you provide 100% architectural and routing context while **saving up to 90%+ of tokens**!\n\n`;
   md += `### 💡 How to use this skill for Vibe Coding:\n`;
-  md += `1. **Clone your target repository**:\n`;
-  md += `   \`\`\`bash\n   git clone <target-repo-url> && cd <target-folder-name>\n   \`\`\`\n`;
-  md += `2. **Clone this Scanner Skill** directly into it:\n`;
-  md += `   \`\`\`bash\n   git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill\n   \`\`\`\n`;
-  md += `3. **Set up & Execute the static sweep**:\n`;
-  md += `   \`\`\`bash\n   cd scanner_skill && npm install && node scan.js\n   \`\`\`\n`;
-  md += `4. **Direct your AI Assistant** (Cursor, Tabnine, etc.) to read the compiled files under \`output_scanner/\` to work with full, lightweight project blueprints instantly!\n\n`;
+  md += `1. **Navigate to your target repository**:\n`;
+  md += `   \`\`\`bash\n   cd <target-folder-name>\n   \`\`\`\n`;
+  md += `2. **Execute the static sweep** via \`npx\`:\n`;
+  md += `   \`\`\`bash\n   npx @sujoymoulick/scanner-skill\n   \`\`\`\n`;
+  md += `   *(Alternatively, if installed globally, simply run \`scanner-skill\`)*\n`;
+  md += `3. **Direct your AI Assistant** (Cursor, Tabnine, etc.) to read the compiled files under \`scanner_skill/\` to work with full, lightweight project blueprints instantly!\n\n`;
   md += `\n---\n\n`;
   md += `## 👤 About the Developer\n\n`;
   md += `This Codebase Scanner Skill Engine was designed and engineered by **[Sujoy Moulick](https://www.sujoymoulick.online/)**.\n\n`;
@@ -1236,109 +1286,193 @@ function generateReadmeMarkdown(repoName, repoUrl, stats, tree, manifests) {
 /**
  * Generate instruction.md containing setup and running guidelines
  */
-function generateInstructionMarkdown(repoName, stats, instructions) {
-  let md = `# 📖 Setup & Setup Instructions: **${repoName}**\n\n`;
-  md += `This instruction guide provides complete steps to configure, launch, and run this codebase locally.\n\n`;
+function generateInstructionMarkdown(repoName, stats, instructions, repoUrl = '', tree = []) {
+  const defaultTemplate = `# 📖 Setup & Run Instructions: **{{REPO_NAME}}**
 
-  md += `---\n\n`;
-  md += `## 🚀 Step-by-Step Development Roadmap\n\n`;
-  
-  md += `### Phase 1: Environment Setup\n`;
-  md += `1.  **Clone / Checkout**: Ensure all workspace files are available locally.\n`;
+This instruction guide provides complete steps to configure, launch, and run this codebase locally.
+
+---
+
+## ℹ️ Project Specifications
+*   **Repository Source**: [{{REPO_URL}}]({{REPO_URL}})
+*   **Primary Ecosystem**: **{{ECOSYSTEM}}**
+*   **Total Files Count**: {{TOTAL_FILES}} scanned files
+*   **Combined Size**: {{TOTAL_SIZE}}
+
+---
+
+## 🏗️ Codebase Structure
+\`\`\`text
+{{TREE}}
+\`\`\`
+
+---
+
+## 🚀 Step-by-Step Development Roadmap
+
+### Phase 1: Environment Setup
+1.  **Clone / Checkout**: Ensure all workspace files are available locally.
+2.  **Ecosystem Dependencies**:
+{{ECOSYSTEM_SETUP_STEPS}}
+3.  **Environment Variables**: Create a \`.env\` file in the root if the project requires credentials or API urls.
+
+### Phase 2: Local Startup & Execution
+1.  **Boot Command**: Run the startup scripts inside the terminal:
+{{ECOSYSTEM_STARTUP_STEPS}}
+2.  **Verification**: Access the corresponding local port to confirm state.
+
+### Phase 3: Testing & Code Checks
+1.  **Linting & Style Checks**: Run code formatting/checks to avoid runtime regressions.
+2.  **Unit Tests**: Build custom unit testing scripts in a dedicated \`tests/\` folder.
+
+---
+
+## ⚙️ Heuristically Isolated Setup Guide (Original README)
+
+{{ORIGINAL_SETUP_GUIDE}}
+
+---
+*Generated by Codebase Scanner Skill © 2026.*`;
+
+  let template = readTemplateOrDefault('instruction.template.md', defaultTemplate);
+
   const ecoType = (stats.ecosystemType || '').toLowerCase();
+  let setupSteps = '';
   if (ecoType.includes('node') || ecoType.includes('react')) {
-    md += `2.  **Node Environment**: Verify Node.js (v16+) is loaded. Install dependencies:\n`;
-    md += `    \`\`\`bash\n    npm install\n    \`\`\`\n`;
+    setupSteps = `1. Verify Node.js (v16+) is loaded.\n2. Install dependencies:\n   \`\`\`bash\n   npm install\n   \`\`\``;
   } else if (ecoType.includes('python')) {
-    md += `2.  **Python Virtualenv**: Initialize a virtual environment and load requirements:\n`;
-    md += `    \`\`\`bash\n    python -m venv venv\n    source venv/bin/activate\n    pip install -r requirements.txt\n    \`\`\`\n`;
+    setupSteps = `1. Initialize a virtual environment:\n   \`\`\`bash\n   python -m venv venv\n   source venv/bin/activate\n   \`\`\`\n2. Install requirements:\n   \`\`\`bash\n   pip install -r requirements.txt\n   \`\`\``;
   } else if (ecoType.includes('go')) {
-    md += `2.  **Go Modules**: Run packages check:\n`;
-    md += `    \`\`\`bash\n    go mod tidy\n    \`\`\`\n`;
+    setupSteps = `1. Run package check:\n   \`\`\`bash\n   go mod tidy\n   \`\`\``;
   } else {
-    md += `2.  **Standard Environment**: Verify dependencies and package managers corresponding to **${stats.ecosystemType || 'General'}**.\n`;
+    setupSteps = `1. Verify dependencies and package managers corresponding to **${stats.ecosystemType || 'General'}**.`;
   }
-  md += `3.  **Environment Variables**: Create a \`.env\` file in the root if the project requires credentials or API urls.\n\n`;
 
-  md += `### Phase 2: Local Startup & Execution\n`;
-  md += `1.  **Boot Command**: Run the startup scripts inside the terminal:\n`;
+  let startupSteps = '';
   if (ecoType.includes('node') || ecoType.includes('react')) {
-    md += `    \`\`\`bash\n    npm run dev\n    \`\`\`\n`;
+    startupSteps = `    \`\`\`bash\n    npm run dev\n    \`\`\``;
   } else if (ecoType.includes('python')) {
-    md += `    \`\`\`bash\n    python main.py\n    \`\`\`\n`;
+    startupSteps = `    \`\`\`bash\n    python main.py\n    \`\`\``;
   } else if (ecoType.includes('go')) {
-    md += `    \`\`\`bash\n    go run main.go\n    \`\`\`\n`;
+    startupSteps = `    \`\`\`bash\n    go run main.go\n    \`\`\``;
   } else {
-    md += `    Verify startup scripts inside source files.\n`;
+    startupSteps = `    Verify startup command inside source files.`;
   }
-  md += `2.  **Verification**: Access the corresponding local port to confirm state.\n\n`;
 
-  md += `### Phase 3: Testing & Code Checks\n`;
-  md += `1.  **Linting & Style Checks**: Run code formatting/checks to avoid runtime regressions.\n`;
-  md += `2.  **Unit Tests**: Build custom unit testing scripts (e.g., Jest, PyTest, go test) in a dedicated \`tests/\` folder.\n\n`;
+  const originalSetup = instructions && instructions.trim() && !instructions.toLowerCase().includes('no readme.md found')
+    ? instructions
+    : '*No dedicated running instructions were isolated from the original project readme.*';
 
-  md += `---\n\n`;
-  md += `## ⚙️ Heuristically Isolated Setup Guide (Original README)\n\n`;
-  if (instructions && instructions.trim() && !instructions.toLowerCase().includes('no readme.md found')) {
-    md += instructions;
-  } else {
-    md += `*No dedicated running instructions were isolated from the original project readme.*\n`;
-  }
-  md += `\n---\n*Generated by Codebase Scanner Skill © 2026.*\n`;
-  return md;
+  template = template
+    .replace(/\{\{REPO_NAME\}\}/g, repoName)
+    .replace(/\{\{REPO_URL\}\}/g, repoUrl || 'N/A')
+    .replace(/\{\{ECOSYSTEM\}\}/g, stats.ecosystemType || 'General')
+    .replace(/\{\{TOTAL_FILES\}\}/g, stats.totalFiles || 0)
+    .replace(/\{\{TOTAL_SIZE\}\}/g, formatBytes(stats.totalSizeBytes || 0))
+    .replace(/\{\{TREE\}\}/g, formatTreeMarkdown(tree))
+    .replace(/\{\{ECOSYSTEM_SETUP_STEPS\}\}/g, setupSteps)
+    .replace(/\{\{ECOSYSTEM_STARTUP_STEPS\}\}/g, startupSteps)
+    .replace(/\{\{ORIGINAL_SETUP_GUIDE\}\}/g, originalSetup);
+
+  return template;
 }
 
 /**
  * Generate ui.md containing UI related details
  */
-function generateUiMarkdown(repoName, routes, cssVariables) {
-  let md = `# 🎨 Interface & UI Blueprint: **${repoName}**\n\n`;
-  md += `This document details all discovered client routes, component mapping, and global styling custom variable variables.\n\n`;
+function generateUiMarkdown(repoName, routes, cssVariables, stats = {}) {
+  const defaultTemplate = `# 🎨 Interface & UI Blueprint: **{{REPO_NAME}}**
 
-  md += `---\n\n`;
+This document details all discovered client routes, component mapping, and global styling custom variable variables.
 
-  // Dynamic Routing
-  md += `## 🚦 Client Views & Routing Outline\n\n`;
+---
+
+## ℹ️ Project Overview
+*   **Ecosystem Type**: **{{ECOSYSTEM}}**
+*   **Total Files Scanned**: {{TOTAL_FILES}}
+*   **Codebase Volume**: {{TOTAL_SIZE}}
+
+---
+
+## 🚦 Client Views & Routing Outline
+
+{{CLIENT_ROUTES}}
+
+---
+
+## 🔌 Backend/API Endpoint Mapping
+
+{{API_ROUTES}}
+
+---
+
+## 🖌️ Stylesheet Tokens & Design Variables
+
+{{CSS_VARIABLES}}
+
+---
+*Generated by Codebase Scanner Skill © 2026.*`;
+
+  let template = readTemplateOrDefault('ui.template.md', defaultTemplate);
+
   let clientRoutes = routes.filter(r => r.type.toLowerCase().includes('view') || r.type.toLowerCase().includes('frontend'));
   let apiRoutes = routes.filter(r => r.type.toLowerCase().includes('api') || r.type.toLowerCase().includes('backend'));
 
+  let clientStr = '';
   if (clientRoutes.length === 0) {
-    md += `*No dedicated client routing views detected in this repository.*\n\n`;
+    clientStr = '*No dedicated client routing views detected in this repository.*';
   } else {
-    md += `| Route / Endpoint | Component View | Method | Location |\n`;
-    md += `| :--- | :--- | :--- | :--- |\n`;
+    clientStr = '| Route / Endpoint | Component View | Method | Location |\n| :--- | :--- | :--- | :--- |\n';
     clientRoutes.forEach(r => {
-      md += `| \`${r.route}\` | \`${r.component || 'N/A'}\` | \`VIEW\` | \`${r.file}:${r.line}\` |\n`;
+      clientStr += `| \`${r.route}\` | \`${r.component || 'N/A'}\` | \`VIEW\` | \`${r.file}:${r.line}\` |\n`;
     });
-    md += `\n`;
   }
 
-  if (apiRoutes.length > 0) {
-    md += `### 🔌 Backend/API Endpoint Mapping\n\n`;
-    md += `| API Route | Type | Method | Location |\n`;
-    md += `| :--- | :--- | :--- | :--- |\n`;
+  let apiStr = '';
+  if (apiRoutes.length === 0) {
+    apiStr = '*No dedicated API endpoint mappings detected in this repository.*';
+  } else {
+    apiStr = '| API Route | Type | Method | Location |\n| :--- | :--- | :--- | :--- |\n';
     apiRoutes.forEach(r => {
-      md += `| \`${r.route}\` | **${r.type}** | \`${r.method}\` | \`${r.file}:${r.line}\` |\n`;
+      apiStr += `| \`${r.route}\` | **${r.type}** | \`${r.method}\` | \`${r.file}:${r.line}\` |\n`;
     });
-    md += `\n`;
   }
-  
-  md += `---\n\n`;
 
-  // CSS Variables
-  md += `## 🖌️ Stylesheet Tokens & Design Variables\n\n`;
+  let cssStr = '';
   if (cssVariables && cssVariables.length > 0) {
-    md += `| Token Name | Assigned Value | File Location |\n`;
-    md += `| :--- | :--- | :--- |\n`;
+    cssStr = '| Token Name | Assigned Value | File Location |\n| :--- | :--- | :--- |\n';
     cssVariables.forEach(v => {
-      md += `| \`${v.name}\` | \`${v.value}\` | \`${v.file}:${v.line}\` |\n`;
+      cssStr += `| \`${v.name}\` | \`${v.value}\` | \`${v.file}:${v.line}\` |\n`;
     });
   } else {
-    md += `*No global stylesheet custom properties variables detected.*\n`;
+    cssStr = '*No global stylesheet custom properties variables detected.*';
   }
-  
-  md += `\n---\n*Generated by Codebase Scanner Skill © 2026.*\n`;
-  return md;
+
+  template = template
+    .replace(/\{\{REPO_NAME\}\}/g, repoName)
+    .replace(/\{\{ECOSYSTEM\}\}/g, stats.ecosystemType || 'General')
+    .replace(/\{\{TOTAL_FILES\}\}/g, stats.totalFiles || 0)
+    .replace(/\{\{TOTAL_SIZE\}\}/g, formatBytes(stats.totalSizeBytes || 0))
+    .replace(/\{\{CLIENT_ROUTES\}\}/g, clientStr)
+    .replace(/\{\{API_ROUTES\}\}/g, apiStr)
+    .replace(/\{\{CSS_VARIABLES\}\}/g, cssStr);
+
+  return template;
+}
+
+/**
+ * Helper to read template with absolute path or fall back
+ */
+function readTemplateOrDefault(templateName, defaultContent) {
+  try {
+    const templatePath = path.join(__dirname, 'templates', templateName);
+    if (fs.existsSync(templatePath)) {
+      return fs.readFileSync(templatePath, 'utf8');
+    }
+  } catch (e) {
+    // Suppress warning if not found
+  }
+  return defaultContent;
 }
 
 /**
@@ -1579,12 +1713,12 @@ async function run() {
     );
     fs.writeFileSync(
       path.join(outputScannerDir, 'instruction.md'),
-      generateInstructionMarkdown(repoName, stats, instructions),
+      generateInstructionMarkdown(repoName, stats, instructions, repoUrl, tree),
       'utf8'
     );
     fs.writeFileSync(
       path.join(outputScannerDir, 'ui.md'),
-      generateUiMarkdown(repoName, routes, cssVariables),
+      generateUiMarkdown(repoName, routes, cssVariables, stats),
       'utf8'
     );
 

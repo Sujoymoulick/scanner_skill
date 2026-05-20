@@ -7,8 +7,44 @@
 Welcome to the ultimate codebase blueprint for **scanner-skill**. This document compiles high-density specifications, dynamic routing schemes, custom styling design tokens, file topologies, repository statistics, and step-by-step extension roadmaps in a single unified entrypoint.
 
 *   **Primary Ecosystem**: **Node.js (JS/TS)**
-*   **Total Files Count**: 6 scanned files
-*   **Combined Size**: 158.6 KB
+*   **Total Files Count**: 8 scanned files
+*   **Combined Size**: 168.7 KB
+
+---
+
+## 📦 Installation & Quick Start
+
+You can run and install **scanner-skill** using `npx` or via global/local `npm` installations:
+
+### 1. Run Instantly via `npx` (No Installation Needed)
+To scan your current local directory and initialize the AI agent skill:
+```bash
+npx @sujoymoulick/scanner-skill
+```
+To scan a remote GitHub repository and launch the interactive local web dashboard:
+```bash
+npx @sujoymoulick/scanner-skill <github-repo-url>
+```
+
+### 2. Global Installation
+To install the CLI tool globally on your system:
+```bash
+npm install -g @sujoymoulick/scanner-skill
+```
+Now you can execute the command from any workspace directory:
+```bash
+scanner-skill [path-to-file-or-dir | github-repo-url]
+```
+
+### 3. Local Dev Dependency
+To integrate it directly inside an existing codebase:
+```bash
+npm install --save-dev @sujoymoulick/scanner-skill
+```
+And execute via:
+```bash
+npx scanner-skill
+```
 
 ---
 
@@ -54,6 +90,9 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 | `--shadow-brutal-small` | `2px 2px 0px #000000` | [`styles.css:31`](file:///Users/sujoymoulick/scanner-skill/styles.css#L31) |
 | `--transition-fast` | `all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275)` | [`styles.css:33`](file:///Users/sujoymoulick/scanner-skill/styles.css#L33) |
 | `--container-max-width` | `1200px` | [`styles.css:34`](file:///Users/sujoymoulick/scanner-skill/styles.css#L34) |
+| `--bg-yellow` | `#ffffff` | [`styles.css:1559`](file:///Users/sujoymoulick/scanner-skill/styles.css#L1559) |
+| `--color-white` | `#ffffff` | [`styles.css:1560`](file:///Users/sujoymoulick/scanner-skill/styles.css#L1560) |
+| `--color-black` | `#000000` | [`styles.css:1561`](file:///Users/sujoymoulick/scanner-skill/styles.css#L1561) |
 
 ---
 
@@ -69,12 +108,15 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 
 ## 🏗️ Codebase Directory Tree
 ```text
+├── 📂 templates/
+│   ├── 📄 instruction.template.md (1.3 KB)
+│   └── 📄 ui.template.md (577 B)
 ├── 📄 .gitignore (171 B)
-├── 📄 index.html (52 KB)
+├── 📄 index.html (52.9 KB)
 ├── 📄 package.json (1 KB)
-├── 📄 README.md (9.6 KB)
-├── 📄 scan.js (63.7 KB)
-└── 📄 styles.css (32.1 KB)
+├── 📄 README.md (10.2 KB)
+├── 📄 scan.js (67.2 KB)
+└── 📄 styles.css (35.3 KB)
 ```
 
 ---
@@ -84,21 +126,21 @@ Welcome to the ultimate codebase blueprint for **scanner-skill**. This document 
 ### Language & Extension Breakdown
 | File Extension | File Count | Combined Size | Total Lines |
 | :--- | :--- | :--- | :--- |
+| `.md` (Markdown) | 3 | 12.1 KB | 310 |
 | `` () | 1 | 171 B | N/A |
-| `.html` (HTML) | 1 | 52 KB | 931 |
+| `.html` (HTML) | 1 | 52.9 KB | 937 |
 | `.json` (JSON) | 1 | 1 KB | 46 |
-| `.md` (Markdown) | 1 | 9.6 KB | 187 |
-| `.js` (JavaScript) | 1 | 63.7 KB | 1715 |
-| `.css` (CSS) | 1 | 32.1 KB | 1535 |
+| `.js` (JavaScript) | 1 | 67.2 KB | 1849 |
+| `.css` (CSS) | 1 | 35.3 KB | 1677 |
 
 ### 🔝 Top 5 Largest Files
 | File Path | Size | File Type |
 | :--- | :--- | :--- |
-| [`scan.js`](file:///Users/sujoymoulick/scanner-skill/scan.js) | 63.7 KB | `JavaScript` |
-| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 52 KB | `HTML` |
-| [`styles.css`](file:///Users/sujoymoulick/scanner-skill/styles.css) | 32.1 KB | `CSS` |
-| [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 9.6 KB | `Markdown` |
-| [`package.json`](file:///Users/sujoymoulick/scanner-skill/package.json) | 1 KB | `JSON` |
+| [`scan.js`](file:///Users/sujoymoulick/scanner-skill/scan.js) | 67.2 KB | `JavaScript` |
+| [`index.html`](file:///Users/sujoymoulick/scanner-skill/index.html) | 52.9 KB | `HTML` |
+| [`styles.css`](file:///Users/sujoymoulick/scanner-skill/styles.css) | 35.3 KB | `CSS` |
+| [`README.md`](file:///Users/sujoymoulick/scanner-skill/README.md) | 10.2 KB | `Markdown` |
+| [`templates/instruction.template.md`](file:///Users/sujoymoulick/scanner-skill/templates/instruction.template.md) | 1.3 KB | `Markdown` |
 
 ---
 
@@ -164,22 +206,19 @@ No dedicated install instructions detected in the original project readme.
 ## 💡 **Vibe Coding & AI Agent Token Optimization**
 
 > [!TIP]
-> **Token Saver Advantage**: AI agents (like Cursor, Gemini, Tabnine, and Copilot) have limited context window allocations and API limits. Running this scanner compiles your repository into lightweight blueprints inside `output_scanner/`. Directing your AI agent to read **only this directory** provides 100% architectural and routing context while **saving up to 90%+ of tokens**!
+> **Token Saver Advantage**: AI agents (like Cursor, Gemini, Tabnine, and Copilot) have limited context window allocations and API limits. Running this scanner compiles your repository into lightweight blueprints. Directing your AI agent to read **only this directory** provides 100% architectural and routing context while **saving up to 90%+ of tokens**!
 
 ### 🚀 Step-by-Step Vibe Coding Walkthrough:
-1. **Clone your target repository**:
+1. **Navigate to your target repository**:
    ```bash
-   git clone <target-repo-url> && cd <target-folder-name>
+   cd <target-folder-name>
    ```
-2. **Clone the Codebase Scanner Skill** directly inside it:
+2. **Execute the static sweep** via `npx`:
    ```bash
-   git clone https://github.com/Sujoymoulick/scanner_skill.git scanner_skill
+   npx @sujoymoulick/scanner-skill
    ```
-3. **Set up & Execute the static sweep**:
-   ```bash
-   cd scanner_skill && npm install && node scan.js
-   ```
-4. **Feed the Blueprints to your AI Agent**: Direct your assistant to read the compiled files under `output_scanner/` (e.g. `readme.md`, `ui.md`, `instruction.md`) to code with absolute architectural clarity at a fraction of the token cost!
+   *(Alternatively, if installed globally, simply run `scanner-skill`)*
+3. **Feed the Blueprints to your AI Agent**: Direct your assistant to read the compiled files under `scanner_skill/` to code with absolute architectural clarity at a fraction of the token cost!
 
 
 ---

@@ -72,19 +72,19 @@
 
       <!-- Right side: Sidebar Info -->
       <div class="sidebar">
-        <!-- Tech Stack -->
-        <div class="sidebar-card">
-          <h3>Detected Ecosystem</h3>
-          <div class="tech-list" id="tech-stack-container">
-            <!-- Dynamic tags -->
-          </div>
+        <!-- PDF Download Action -->
+        <div class="sidebar-card pdf-card" style="text-align: center;">
+          <button class="btn btn-pdf" id="btn-download-pdf" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 0.75rem; font-family: var(--font-mono); font-size: 1.1rem; font-weight: bold; padding: 1rem; cursor: pointer; transition: var(--transition-fast);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download as PDF
+          </button>
         </div>
 
-        <!-- Directory Tree -->
+        <!-- Directory Structure -->
         <div class="sidebar-card">
           <h3>Directory Structure</h3>
           <p style="font-size: 0.85rem; color: var(--color-black); font-weight: bold; margin-top: -0.5rem; margin-bottom: 0.25rem;">
-            *Generic landing assets (index.html, style.css) automatically excluded.
+            *Generic landing assets automatically excluded.
           </p>
           <div class="tree-box">
             <pre id="tree-container">Loading codebase tree...</pre>
@@ -808,6 +808,19 @@ npx @sujoymoulick/scanner-skill</pre>
       const heroSec = document.querySelector('main.hero');
       if (heroSec) heroSec.style.display = 'none';
 
+      // Hide all other landing page showcase sections
+      const sectionsToHide = ['#features', '#demo', '#how-it-works', '#ai-token-saver', '#terminal-section', '#about-developer'];
+      sectionsToHide.forEach(selector => {
+        const el = document.querySelector(selector);
+        if (el) el.style.display = 'none';
+      });
+
+      // Simplify navigation bar: Keep only Logo and a single "Documentation" button
+      const navLinks = document.querySelector('.nav-links');
+      if (navLinks) {
+        navLinks.innerHTML = '<li><a href="https://sujoymoulick.github.io/scanner_skill/" target="_blank" class="btn-nav">Documentation</a></li>';
+      }
+
       const dashSec = document.getElementById('active-dashboard');
       if (dashSec) dashSec.style.display = 'block';
 
@@ -817,26 +830,19 @@ npx @sujoymoulick/scanner-skill</pre>
       
       document.getElementById('instructions-container').innerHTML = marked.parse(activeScanData.instructions);
 
-      const techContainer = document.getElementById('tech-stack-container');
-      if (techContainer) {
-        techContainer.innerHTML = '';
-        if (activeScanData.technologies.length === 0) {
-          techContainer.innerHTML = '<span style="font-style: italic; color: var(--color-black);">No ecosystem dependencies parsed.</span>';
-        } else {
-          activeScanData.technologies.forEach(tech => {
-            const tag = document.createElement('span');
-            tag.className = 'tech-tag';
-            tag.innerText = tech;
-            techContainer.appendChild(tag);
-          });
-        }
-      }
-
       document.getElementById('stat-files').innerText = activeScanData.stats.filesCount;
       document.getElementById('stat-weight').innerText = activeScanData.stats.totalWeight;
       document.getElementById('stat-type').innerText = activeScanData.stats.ecosystemType;
 
       document.getElementById('tree-container').innerText = activeScanData.tree;
+
+      // Attach print action listener to Neubrutalist PDF button
+      const btnDownloadPdf = document.getElementById('btn-download-pdf');
+      if (btnDownloadPdf) {
+        btnDownloadPdf.addEventListener('click', () => {
+          window.print();
+        });
+      }
     }
 
     // Retro Dinosaur Neubrutalist Loader - Session One-Time Play
