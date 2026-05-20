@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Codebase & File Scanner Skill (Unified Version)
  * 

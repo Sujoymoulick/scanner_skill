@@ -1,0 +1,45 @@
+{
+  "name": "@sujoymoulick/scanner-skill",
+  "version": "1.0.0",
+  "description": "Dynamic codebase analyzer, ASCII tree generator, dependency resolver, styling token map, and local interactive web dashboard for AI agents.",
+  "type": "module",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "scan.js",
+  "bin": {
+    "scanner-skill": "./scan.js"
+  },
+  "scripts": {
+    "start": "node scan.js"
+  },
+  "files": [
+    "scan.js",
+    "index.html",
+    "styles.css",
+    "assets/",
+    "README.md"
+  ],
+  "keywords": [
+    "codebase",
+    "scanner",
+    "blueprint",
+    "ai-agent",
+    "prompt-engineering",
+    "documentation",
+    "analysis",
+    "ast",
+    "cli",
+    "dashboard"
+  ],
+  "author": "Sujoy Moulick <sujoymoulick05@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sujoymoulick/scanner_skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sujoymoulick/scanner_skill/issues"
+  },
+  "homepage": "https://github.com/Sujoymoulick/scanner_skill#readme"
+}
